@@ -23,21 +23,21 @@
     rgba(192, 132, 252, 0.4) 60%,
     rgba(45, 212, 191, 0.45) 100%
   );
-  --refract-glow: radial-gradient(circle, rgba(255, 110, 30, 0.28) 0%, rgba(168, 85, 247, 0.18) 40%, rgba(6, 214, 160, 0.1) 70%, transparent 85%);
+  --refract-glow: radial-gradient(circle, rgba(255, 110, 30, 0.3) 0%, rgba(168, 85, 247, 0.2) 40%, rgba(6, 214, 160, 0.12) 70%, transparent 85%);
 
   /* Liquid Glass Tokens */
-  --glass-bg: rgba(16, 18, 25, 0.65);
-  --glass-bg-hover: rgba(26, 30, 42, 0.78);
-  --glass-card: rgba(14, 16, 22, 0.72);
-  --glass-card-active: rgba(28, 22, 20, 0.88);
+  --glass-bg: rgba(14, 16, 23, 0.72);
+  --glass-bg-hover: rgba(24, 28, 40, 0.85);
+  --glass-card: rgba(12, 14, 20, 0.78);
+  --glass-card-active: rgba(26, 20, 18, 0.92);
   --glass-blur: blur(28px) saturate(210%);
-  --glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), inset 0 1px 1px rgba(255, 255, 255, 0.2);
-  --glass-rim: inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1.5px 0 0 rgba(255, 255, 255, 0.25);
+  --glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  --glass-rim: inset 0 0 0 1px rgba(255, 255, 255, 0.08), inset 0 1.5px 0 0 rgba(255, 255, 255, 0.28);
 
   /* Accent Hues */
   --amber-core: #ff601a;
   --amber-light: #ff8c42;
-  --amber-glow: rgba(255, 96, 26, 0.35);
+  --amber-glow: rgba(255, 96, 26, 0.38);
   --cyan-caustic: #00f2fe;
   --violet-dispersion: #b388ff;
 
@@ -79,18 +79,44 @@ body {
 }
 
 /* ==========================================================================
-   AMBIENT CHROMATIC LIGHT REFRACTION & CAUSTIC BACKDROPS
+   FULLSCREEN AMBIENT LOOPING VIDEO BACKGROUND (PRJCT ESCP_CON_1.mp4)
    ========================================================================== */
+.ambient-video-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-video-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.18;
+  filter: blur(14px) saturate(140%) brightness(0.6);
+  transform: scale(1.08);
+}
+
+.bg-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 30%, rgba(7, 8, 11, 0.6) 0%, rgba(7, 8, 11, 0.94) 80%, #07080b 100%);
+}
+
+/* Ambient Chromatic Refraction Caustic Glows */
 .caustic-ambient-1 {
   position: fixed;
   top: -150px;
   left: 10%;
   width: 700px;
   height: 700px;
-  background: radial-gradient(circle, rgba(255, 94, 26, 0.2) 0%, rgba(255, 174, 0, 0.12) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 94, 26, 0.22) 0%, rgba(255, 174, 0, 0.12) 40%, transparent 70%);
   filter: blur(85px);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   animation: float-caustic 18s infinite ease-in-out alternate;
 }
 
@@ -100,10 +126,10 @@ body {
   right: -100px;
   width: 650px;
   height: 650px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.16) 0%, rgba(0, 242, 254, 0.14) 40%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.18) 0%, rgba(0, 242, 254, 0.15) 40%, transparent 70%);
   filter: blur(95px);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
   animation: float-caustic 22s infinite ease-in-out alternate-reverse;
 }
 
@@ -113,29 +139,16 @@ body {
   left: 25%;
   width: 800px;
   height: 500px;
-  background: radial-gradient(circle, rgba(255, 96, 26, 0.14) 0%, rgba(179, 136, 255, 0.1) 50%, transparent 75%);
+  background: radial-gradient(circle, rgba(255, 96, 26, 0.16) 0%, rgba(179, 136, 255, 0.1) 50%, transparent 75%);
   filter: blur(105px);
   pointer-events: none;
-  z-index: 0;
+  z-index: 1;
 }
 
 @keyframes float-caustic {
   0% { transform: translate(0, 0) scale(1); }
   50% { transform: translate(40px, 30px) scale(1.08); }
   100% { transform: translate(-30px, -20px) scale(0.95); }
-}
-
-/* Subtle Refraction Grid */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* ==========================================================================
@@ -182,7 +195,7 @@ body::after {
   -webkit-mask-composite: xor;
   mask-composite: exclude;
   pointer-events: none;
-  opacity: 0.8;
+  opacity: 0.85;
   transition: opacity 0.3s ease;
 }
 
@@ -231,13 +244,13 @@ body::after {
   display: flex;
   align-items: center;
   gap: 6px;
-  background: rgba(0, 0, 0, 0.35);
+  background: rgba(0, 0, 0, 0.45);
   padding: 4px;
   border-radius: var(--radius-pill);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-@media (max-width: 860px) {
+@media (max-width: 960px) {
   .filter-pills-nav {
     display: none;
   }
@@ -264,9 +277,9 @@ body::after {
 
 .filter-btn.active {
   color: var(--text-white);
-  background: rgba(255, 96, 26, 0.22);
-  border: 1px solid rgba(255, 96, 26, 0.5);
-  box-shadow: 0 0 14px rgba(255, 96, 26, 0.3);
+  background: rgba(255, 96, 26, 0.25);
+  border: 1px solid rgba(255, 96, 26, 0.6);
+  box-shadow: 0 0 16px rgba(255, 96, 26, 0.35);
 }
 
 .header-actions {
@@ -275,16 +288,16 @@ body::after {
   gap: 10px;
 }
 
-/* Liquid Glass Tactile Buttons */
+/* Liquid Glass Buttons */
 .liquid-btn {
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
   color: var(--text-white);
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top: 1px solid rgba(255, 255, 255, 0.28);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
   padding: 8px 16px;
   border-radius: var(--radius-pill);
   cursor: pointer;
@@ -297,10 +310,10 @@ body::after {
 }
 
 .liquid-btn:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.28);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 16px rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 16px rgba(255, 255, 255, 0.18);
 }
 
 .liquid-btn.primary {
@@ -308,16 +321,16 @@ body::after {
   color: #0b0c0e;
   font-weight: 700;
   border: 1px solid #ff9e5e;
-  box-shadow: 0 0 20px rgba(255, 96, 26, 0.4);
+  box-shadow: 0 0 20px rgba(255, 96, 26, 0.45);
 }
 
 .liquid-btn.primary:hover {
   background: linear-gradient(135deg, #ff702a 0%, #ffa055 100%);
-  box-shadow: 0 0 28px rgba(255, 96, 26, 0.65);
+  box-shadow: 0 0 28px rgba(255, 96, 26, 0.7);
 }
 
 /* ==========================================================================
-   MAIN VIDEO EDITOR SHOWCASE STAGE
+   MOODY JOSHUA EARLE LANDSCAPE HERO BANNER
    ========================================================================== */
 main {
   flex: 1;
@@ -327,33 +340,75 @@ main {
   padding: 105px 24px 60px;
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 40px;
   position: relative;
   z-index: 10;
 }
 
-.editor-intro-bar {
+.moody-cover-banner {
+  width: 100%;
+  min-height: 280px;
+  border-radius: var(--radius-glass);
+  background-size: cover;
+  background-position: center 35%;
+  position: relative;
+  overflow: hidden;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding-bottom: 20px;
+  box-shadow: var(--glass-shadow);
+  border: 1px solid var(--glass-border);
+}
+
+.moody-cover-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-glass);
+  padding: 1.5px;
+  background: var(--refract-border);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cover-glass-overlay {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 36px 32px;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 12, 18, 0.88) 50%, rgba(10, 12, 18, 0.98) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hero-meta-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--amber-core);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .editor-headline {
   font-family: var(--font-display);
   font-size: 38px;
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.12;
   letter-spacing: -0.03em;
   color: var(--text-white);
 }
 
 @media (max-width: 768px) {
   .editor-headline {
-    font-size: 28px;
+    font-size: 26px;
   }
 }
 
@@ -366,14 +421,15 @@ main {
 .editor-stats-strip {
   display: flex;
   align-items: center;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-muted);
 }
 
 .stat-pill {
-  background: var(--glass-card);
+  background: rgba(0, 0, 0, 0.5);
   padding: 6px 12px;
   border-radius: var(--radius-pill);
   border: 1px solid var(--glass-border);
@@ -386,7 +442,9 @@ main {
   color: var(--amber-core);
 }
 
-/* The Main Editor 2-Column Grid */
+/* ==========================================================================
+   2-COLUMN VIDEO EDITOR SHOWCASE GRID
+   ========================================================================== */
 .portfolio-editor-grid {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -400,15 +458,13 @@ main {
   }
 }
 
-/* ==========================================================================
-   LEFT COLUMN: THE CINEMA SHOWCASE VIEWPORT
-   ========================================================================== */
+/* Left Column: Showcase Viewport */
 .showcase-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
   position: sticky;
-  top: 100px;
+  top: 96px;
 }
 
 .showcase-liquid-frame {
@@ -443,21 +499,34 @@ main {
   background: var(--refract-glow);
   filter: blur(40px);
   z-index: 0;
-  opacity: 0.8;
+  opacity: 0.85;
   pointer-events: none;
   transition: all 0.5s ease;
 }
 
+/* Dynamic 16:9 vs 9:16 Media Containers */
 .showcase-media-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 16 / 9;
   background: #000;
   overflow: hidden;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcase-media-container.mode-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+.showcase-media-container.mode-9-16 {
+  aspect-ratio: 9 / 16;
+  max-height: 640px;
+  width: auto;
+  margin: 0 auto;
+  border-radius: 14px;
 }
 
 .showcase-video, .showcase-img {
@@ -465,10 +534,9 @@ main {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: opacity 0.3s ease;
 }
 
-/* Video Player Overlay HUD */
+/* HUD Overlay */
 .showcase-video-overlay {
   position: absolute;
   top: 16px;
@@ -485,9 +553,9 @@ main {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(10, 11, 15, 0.82);
+  background: rgba(10, 11, 15, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 6px 14px;
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
@@ -498,9 +566,9 @@ main {
 }
 
 .timecode-pill {
-  background: rgba(10, 11, 15, 0.82);
+  background: rgba(10, 11, 15, 0.85);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 96, 26, 0.3);
+  border: 1px solid rgba(255, 96, 26, 0.35);
   padding: 6px 12px;
   border-radius: var(--radius-pill);
   font-family: var(--font-mono);
@@ -509,7 +577,17 @@ main {
   color: var(--amber-core);
 }
 
-/* Showcase Controls Bar */
+.format-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Controls Bar */
 .showcase-controls-bar {
   position: relative;
   z-index: 2;
@@ -517,8 +595,8 @@ main {
   align-items: center;
   justify-content: space-between;
   padding: 14px 20px;
-  background: rgba(12, 14, 19, 0.92);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(12, 14, 19, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   gap: 16px;
 }
 
@@ -594,7 +672,7 @@ main {
   border-radius: 50%;
 }
 
-/* Active Project Metadata Sheet */
+/* Active Project Specs Sheet */
 .showcase-meta-card {
   background: var(--glass-card);
   backdrop-filter: var(--glass-blur);
@@ -629,7 +707,7 @@ main {
   font-size: 11px;
   color: var(--amber-core);
   background: rgba(255, 96, 26, 0.12);
-  border: 1px solid rgba(255, 96, 26, 0.3);
+  border: 1px solid rgba(255, 96, 26, 0.35);
   padding: 4px 10px;
   border-radius: var(--radius-pill);
 }
@@ -669,19 +747,19 @@ main {
 }
 
 /* ==========================================================================
-   RIGHT COLUMN: THE INTERACTIVE PROJECT PLAYLIST
+   RIGHT COLUMN: CURATED 10-PROJECT PLAYLIST
    ========================================================================== */
 .playlist-column {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
 }
 
 .playlist-header-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 4px 6px;
+  padding: 0 4px 4px;
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--text-dim);
@@ -689,7 +767,7 @@ main {
   text-transform: uppercase;
 }
 
-/* Liquid Glass Project Cards */
+/* 16:9 Standard Card */
 .playlist-card {
   background: var(--glass-card);
   backdrop-filter: var(--glass-blur);
@@ -709,7 +787,7 @@ main {
 
 .playlist-card:hover {
   background: var(--glass-bg-hover);
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.24);
   transform: translateX(4px);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 96, 26, 0.15);
 }
@@ -717,7 +795,7 @@ main {
 .playlist-card.active {
   background: var(--glass-card-active);
   border-color: var(--amber-core);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 96, 26, 0.28);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 96, 26, 0.3);
 }
 
 .playlist-card.active::before {
@@ -729,6 +807,22 @@ main {
   width: 4px;
   background: linear-gradient(180deg, #ff601a, #ffbe3b, #c084fc);
   box-shadow: 0 0 12px var(--amber-core);
+}
+
+/* Short Form Card with NO THUMBNAIL */
+.playlist-card.no-thumb {
+  display: block;
+  padding: 14px 18px;
+}
+
+.card-duration-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--amber-core);
+  background: rgba(255, 96, 26, 0.12);
+  border: 1px solid rgba(255, 96, 26, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .card-thumb-frame {
@@ -862,8 +956,8 @@ main {
 }
 
 .studio-pill:hover {
-  background: rgba(255, 96, 26, 0.12);
-  border-color: rgba(255, 96, 26, 0.4);
+  background: rgba(255, 96, 26, 0.15);
+  border-color: rgba(255, 96, 26, 0.45);
   color: var(--text-white);
   transform: translateY(-2px);
 }
@@ -872,8 +966,8 @@ main {
    LIQUID GLASS FOOTER CONSOLE
    ========================================================================== */
 footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(8, 9, 13, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 9, 13, 0.88);
   backdrop-filter: blur(20px);
   padding: 36px 24px;
   margin-top: auto;
@@ -937,7 +1031,7 @@ footer {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(6, 7, 10, 0.85);
+  background: rgba(6, 7, 10, 0.88);
   backdrop-filter: blur(16px);
   z-index: 1000;
   display: flex;
@@ -955,7 +1049,7 @@ footer {
 }
 
 .modal-card {
-  background: rgba(18, 20, 28, 0.92);
+  background: rgba(18, 20, 28, 0.94);
   backdrop-filter: var(--glass-blur);
   border: 1px solid var(--glass-border-specular);
   border-radius: var(--radius-glass);
@@ -973,7 +1067,7 @@ footer {
 
 .modal-head {
   padding: 16px 20px;
-  background: rgba(12, 14, 19, 0.8);
+  background: rgba(12, 14, 19, 0.85);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;

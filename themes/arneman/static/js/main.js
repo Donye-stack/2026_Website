@@ -1,12 +1,11 @@
 /**
  * Donye Wilson — Video Editor & 3D Motion Graphics Portfolio
- * Interactive Showcase & Playback Engine for All Assets
+ * Interactive Showcase & Dynamic 9:16 / 16:9 Playback Engine
  */
 document.addEventListener('DOMContentLoaded', () => {
   const playlistCards = document.querySelectorAll('.playlist-card');
   const showcaseContainer = document.getElementById('showcase-media-container');
-  const badgeText = document.getElementById('active-badge-text');
-  const activeTimecode = document.getElementById('active-timecode');
+  const formatBadge = document.getElementById('format-badge');
   const metaTitle = document.getElementById('meta-title');
   const metaRole = document.getElementById('meta-role');
   const metaClient = document.getElementById('meta-client');
@@ -19,12 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const timelineThumb = document.getElementById('timeline-thumb');
   const timelineBar = document.getElementById('timeline-bar');
   const playlistCountBadge = document.getElementById('playlist-count-badge');
-  const totalReelsCount = document.getElementById('total-reels-count');
   let currentVideo = document.getElementById('main-showcase-video');
-
-  // Update total counts
-  if (totalReelsCount) totalReelsCount.textContent = `${playlistCards.length} ASSETS`;
-  if (playlistCountBadge) playlistCountBadge.textContent = `${playlistCards.length} ENTRIES`;
 
   // Clicking ANY card on the right immediately switches the left showcase video/image
   playlistCards.forEach(card => {
@@ -35,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Extract metadata from card
       const type = card.getAttribute('data-type');
+      const format = card.getAttribute('data-format') || '16:9';
       const src = card.getAttribute('data-src');
       const title = card.getAttribute('data-title');
       const client = card.getAttribute('data-client');
@@ -43,6 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const pipeline = card.getAttribute('data-pipeline');
       const tools = card.getAttribute('data-tools');
       const time = card.getAttribute('data-time') || '01:00';
+
+      // Update aspect ratio formatting for 9:16 vs 16:9
+      if (format === '9:16') {
+        showcaseContainer.classList.remove('mode-16-9');
+        showcaseContainer.classList.add('mode-9-16');
+        if (formatBadge) formatBadge.textContent = 'FORMAT: 9:16 VERTICAL';
+      } else {
+        showcaseContainer.classList.remove('mode-9-16');
+        showcaseContainer.classList.add('mode-16-9');
+        if (formatBadge) formatBadge.textContent = 'FORMAT: 16:9 CINEMA';
+      }
 
       // Update left showcase media
       if (type === 'video') {
@@ -165,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
       playlistCards.forEach(card => {
         const cat = card.getAttribute('data-category');
         if (filter === 'all' || cat === filter) {
-          card.style.display = 'grid';
+          card.style.display = card.classList.contains('no-thumb') ? 'block' : 'grid';
           visibleCount++;
         } else {
           card.style.display = 'none';

@@ -1,33 +1,45 @@
+<!-- Ambient Looping Video Background (PRJCT ESCP_CON_1.mp4) -->
+<div class="ambient-video-background">
+  <video class="bg-video-element" src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1.mp4" autoplay muted loop playsinline></video>
+  <div class="bg-video-overlay"></div>
+</div>
+
 <!-- Main Video Editor Stage -->
 <main>
-  <!-- Editor Intro Headline -->
-  <div class="editor-intro-bar">
-    <div>
+  <!-- Joshua Earle Inspired Moody Mountain Hero Banner -->
+  <div class="moody-cover-banner" style="background-image: linear-gradient(180deg, rgba(7, 8, 11, 0.4) 0%, rgba(7, 8, 11, 0.92) 100%), url('{{ .Site.BaseURL }}joshua_earle_cover.jpg');">
+    <div class="cover-glass-overlay">
+      <div class="hero-meta-tag">
+        <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
+        FEATURED MOTION DIRECTOR & POST-PRODUCTION LEAD
+      </div>
       <h1 class="editor-headline">
-        Crafting high-octane <span class="gradient-refract-text">game trailers, 3D worlds & kinetic edits.</span>
+        Atmospheric Game Trailers, <span class="gradient-refract-text">3D Worlds & Kinetic Edits.</span>
       </h1>
-    </div>
-    <div class="editor-stats-strip">
-      <div class="stat-pill">PIPELINE: <strong>UNREAL 5.4 / OCTANE / AE</strong></div>
-      <div class="stat-pill">RESOLUTION: <strong>4K HDR 60FPS</strong></div>
-      <div class="stat-pill">TOTAL REELS: <strong id="total-reels-count">23 ASSETS</strong></div>
-      <div class="stat-pill">LOCATION: <strong>{{ .Site.Params.location }}</strong></div>
+      <p class="hero-description" style="color: #d1d4de; max-width: 620px; font-size: 15px;">
+        Specializing in high-octane game cinematics, procedural Unreal Engine 5.4 environments, and high-retention 9:16 vertical edits. Mastered with volumetric lighting and custom sound synchronization.
+      </p>
+      <div class="editor-stats-strip" style="margin-top: 8px;">
+        <div class="stat-pill">PIPELINE: <strong>UNREAL 5.4 / OCTANE / AE</strong></div>
+        <div class="stat-pill">RESOLUTION: <strong>4K HDR / 60 FPS</strong></div>
+        <div class="stat-pill">LOCATION: <strong>{{ .Site.Params.location }}</strong></div>
+      </div>
     </div>
   </div>
 
   <!-- 2-Column Video Editor Portfolio Showcase -->
   <section class="portfolio-editor-grid">
     
-    <!-- LEFT COLUMN: The Active Showcase Viewport & Media Player -->
+    <!-- LEFT COLUMN: The Active Showcase Viewport & Media Player (Adapts to 16:9 or 9:16) -->
     <div class="showcase-column">
-      <div class="showcase-liquid-frame">
+      <div class="showcase-liquid-frame" id="showcase-frame">
         <div class="showcase-ambient-aura"></div>
         
-        <div class="showcase-media-container" id="showcase-media-container">
+        <div class="showcase-media-container mode-16-9" id="showcase-media-container">
           <video 
             id="main-showcase-video"
             class="showcase-video" 
-            src="{{ .Site.BaseURL }}{{ .Site.Params.default_video }}" 
+            src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1.mp4" 
             autoplay 
             muted 
             loop 
@@ -63,9 +75,12 @@
             </div>
           </div>
 
-          <button class="liquid-btn" id="btn-fullscreen" style="padding: 6px 12px; font-size: 10px;">
-            FULLSCREEN [F]
-          </button>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <span class="format-badge" id="format-badge">FORMAT: 16:9</span>
+            <button class="liquid-btn" id="btn-fullscreen" style="padding: 6px 12px; font-size: 10px;">
+              FULLSCREEN [F]
+            </button>
+          </div>
         </div>
       </div>
 
@@ -106,18 +121,17 @@
       </div>
     </div>
 
-    <!-- RIGHT COLUMN: Interactive Project & Reel Selector Playlist (All 23 Assets) -->
+    <!-- RIGHT COLUMN: Curated 10 Selected Projects Playlist -->
     <div class="playlist-column">
       <div class="playlist-header-bar">
-        <span>PORTFOLIO PLAYLIST // CLICK TO SHOWCASE ON LEFT</span>
-        <span id="playlist-count-badge">23 ENTRIES</span>
+        <span>CURATED PLAYLIST // CLICK TO SHOWCASE ON LEFT</span>
+        <span id="playlist-count-badge">10 ENTRIES</span>
       </div>
 
-      <!-- SECTION 1: GAME TRAILERS & CINEMATICS -->
-
-      <!-- Asset 1: Project Escape Sequence 01 -->
+      <!-- 1. Project Escape: Sequence 01 (16:9 Trailer) -->
       <div class="playlist-card active" 
            data-type="video" 
+           data-format="16:9"
            data-src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1.mp4" 
            data-title="Project Escape: Sequence 01" 
            data-client="AAA GAME TRAILER"
@@ -133,7 +147,7 @@
         </div>
         <div class="card-info">
           <div>
-            <div class="card-category-tag">GAME TRAILER</div>
+            <div class="card-category-tag">GAME TRAILER • 16:9</div>
             <div class="card-title">Project Escape: Sequence 01</div>
           </div>
           <div class="card-meta-line">
@@ -143,9 +157,10 @@
         </div>
       </div>
 
-      <!-- Asset 2: Alchemortis Launch Trailer -->
+      <!-- 2. Alchemortis Launch Trailer (16:9 Trailer) -->
       <div class="playlist-card" 
            data-type="video" 
+           data-format="16:9"
            data-src="{{ .Site.BaseURL }}Alchemortis%20trailer%201.1.mp4" 
            data-title="Alchemortis: Official Trailer" 
            data-client="INDIE GAME STUDIO"
@@ -161,7 +176,7 @@
         </div>
         <div class="card-info">
           <div>
-            <div class="card-category-tag">GAME TRAILER</div>
+            <div class="card-category-tag">GAME TRAILER • 16:9</div>
             <div class="card-title">Alchemortis: Official Trailer</div>
           </div>
           <div class="card-meta-line">
@@ -171,123 +186,10 @@
         </div>
       </div>
 
-      <!-- Asset 3: Halo Reach Render Sequence -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}Halo%20Reach_Render_0.5.mov" 
-           data-title="Halo Reach: Cinematic Lighting Pass" 
-           data-client="CINEMATICS STUDY"
-           data-category="trailers"
-           data-role="3D LIGHTING & CINEMATIC COMPOSITOR"
-           data-desc="Atmospheric sci-fi character scene exploring real-time cinematic rim lighting, volumetric dust particles, and cinematic color space transitions."
-           data-pipeline="REALTIME LIGHTING / 60FPS"
-           data-tools="AFTER EFFECTS / UNREAL 5"
-           data-time="00:30">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Halo%20Reach_Render_0.5.mov" muted loop></video>
-          <span class="card-duration-badge">00:30</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">GAME TRAILER</div>
-            <div class="card-title">Halo Reach: Cinematic Lighting</div>
-          </div>
-          <div class="card-meta-line">
-            <span>VOLUMETRIC LIGHTING</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 4: Joshua Graham Cinematic Character Sequence -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}Joshua%20Graham%20CINI.mp4" 
-           data-title="Joshua Graham: Dramatic Character Reel" 
-           data-client="CINEMATIC CHARACTER"
-           data-category="trailers"
-           data-role="CINEMATIC EDITOR & POST-COLORIST"
-           data-desc="Dramatic storytelling edit with tight audio pacing, emotional lighting contrast, customized color grading, and filmic vignette depth."
-           data-pipeline="CINEMATIC POST / GRADE"
-           data-tools="DAVINCI RESOLVE / PREMIERE"
-           data-time="00:45">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Joshua%20Graham%20CINI.mp4" muted loop></video>
-          <span class="card-duration-badge">00:45</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">GAME TRAILER</div>
-            <div class="card-title">Joshua Graham: Dramatic Reel</div>
-          </div>
-          <div class="card-meta-line">
-            <span>COLOR GRADED // 60 FPS</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 5: Render Comp 1.0 Multi-Pass Composite -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}Render%20Comp1.0.mp4" 
-           data-title="Render Composite: Pass 1.0 Breakdown" 
-           data-client="VFX POST-PRODUCTION"
-           data-category="trailers"
-           data-role="VFX COMPOSITOR & MOTION DESIGNER"
-           data-desc="Complete breakdown of multi-pass 3D rendering: diffuse beauty pass, specular reflections, ambient occlusion, depth maps, and glow post-processing."
-           data-pipeline="MULTI-PASS VFX / 4K"
-           data-tools="AFTER EFFECTS / NUKE"
-           data-time="00:40">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Render%20Comp1.0.mp4" muted loop></video>
-          <span class="card-duration-badge">00:40</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">GAME TRAILER</div>
-            <div class="card-title">Render Composite Breakdown</div>
-          </div>
-          <div class="card-meta-line">
-            <span>VFX COMPOSITING</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 6: QS Car Render Automotive Cinematic -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}QS%20Car%20Render%20Final%20.mp4" 
-           data-title="QS Automotive: Raytraced Vehicle Cinematic" 
-           data-client="AUTOMOTIVE COMMERCIAL"
-           data-category="trailers"
-           data-role="3D LIGHTING & AUTOMOTIVE EDITOR"
-           data-desc="Precision raytraced automotive commercial render highlighting metallic flake paint shaders, studio softbox reflections, and dynamic camera fly-around pacing."
-           data-pipeline="RAYTRACED 3D / OCTANE"
-           data-tools="CINEMA 4D / AFTER EFFECTS"
-           data-time="00:35">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}QS%20Car%20Render%20Final%20.mp4" muted loop></video>
-          <span class="card-duration-badge">00:35</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">GAME TRAILER</div>
-            <div class="card-title">QS Automotive Cinematic</div>
-          </div>
-          <div class="card-meta-line">
-            <span>RAYTRACED AUTOMOTIVE</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 2: 3D WORLDS & PROCEDURAL DYNAMICS -->
-
-      <!-- Asset 7: ASCII Saturn Procedural Engine GIF -->
+      <!-- 3. ASCII Saturn 3D Terminal Lab (16:9 Lab) -->
       <div class="playlist-card" 
            data-type="image" 
+           data-format="16:9"
            data-src="{{ .Site.BaseURL }}ASCII%20SATURN.gif" 
            data-title="ASCII Saturn: Procedural 3D Terminal" 
            data-client="R&D EXPERIMENTAL LAB"
@@ -303,7 +205,7 @@
         </div>
         <div class="card-info">
           <div>
-            <div class="card-category-tag">3D WORLDS</div>
+            <div class="card-category-tag">3D WORLDS • 16:9</div>
             <div class="card-title">ASCII Saturn Procedural Engine</div>
           </div>
           <div class="card-meta-line">
@@ -313,93 +215,10 @@
         </div>
       </div>
 
-      <!-- Asset 8: ASCII Saturn High-Bitrate QuickTime Master -->
+      <!-- 4. ZK Cyber Sci-Fi Environment (16:9 3D World) -->
       <div class="playlist-card" 
            data-type="video" 
-           data-src="{{ .Site.BaseURL }}ASCII%20SATURN.mov" 
-           data-title="ASCII Saturn: High-Bitrate Master" 
-           data-client="PRORES 4444 MASTER"
-           data-category="motion"
-           data-role="3D MOTION DIRECTOR"
-           data-desc="Lossless master capture of the ASCII Saturn kinetic simulation showing uncompressed sub-pixel terminal glyph transitions and smooth 60fps orbital rotation."
-           data-pipeline="PRORES MASTER / 60FPS"
-           data-tools="HOUDINI / AFTER EFFECTS"
-           data-time="00:45">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}ASCII%20SATURN.mov" muted loop></video>
-          <span class="card-duration-badge">00:45</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">3D WORLDS</div>
-            <div class="card-title">ASCII Saturn: ProRes Master</div>
-          </div>
-          <div class="card-meta-line">
-            <span>HIGH-BITRATE MASTER</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 9: ZK Mountain Procedural Terrain -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}ZK%20MOUNTAIN%201.0.mp4" 
-           data-title="ZK Mountain: Procedural Landscape" 
-           data-client="ENVIRONMENT EXPLORATION"
-           data-category="motion"
-           data-role="3D TERRAIN & VOLUMETRIC ARTIST"
-           data-desc="Photorealistic mountain range generation using procedural heightfields, photogrammetry rock assets, realistic cloud simulation, and Octane sky illumination."
-           data-pipeline="UNREAL 5.4 / OCTANE"
-           data-tools="UNREAL / WORLD MACHINE"
-           data-time="00:52">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}ZK%20MOUNTAIN%201.0.mp4" muted loop></video>
-          <span class="card-duration-badge">00:52</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">3D WORLDS</div>
-            <div class="card-title">ZK Mountain: Procedural Landscape</div>
-          </div>
-          <div class="card-meta-line">
-            <span>PHOTOREAL TERRAIN</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 10: ZK Water Simulation & Ocean Dynamics -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}ZK%20WATER%20DEMO%201%2C2.mp4" 
-           data-title="ZK Water: Fluid Dynamics Simulation" 
-           data-client="PHYSICS SIMULATION"
-           data-category="motion"
-           data-role="FLUID SIMULATION & SHADER ARTIST"
-           data-desc="Realistic wave simulation, surface foam dynamics, underwater refraction caustics, and physical light absorption shaders."
-           data-pipeline="FLUID DYNAMICS / OCTANE"
-           data-tools="HOUDINI / CINEMA 4D"
-           data-time="00:48">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}ZK%20WATER%20DEMO%201%2C2.mp4" muted loop></video>
-          <span class="card-duration-badge">00:48</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">3D WORLDS</div>
-            <div class="card-title">ZK Water: Fluid Dynamics</div>
-          </div>
-          <div class="card-meta-line">
-            <span>CAUSTIC FLUID SIM</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 11: ZK Cyber 3D Environment Demo -->
-      <div class="playlist-card" 
-           data-type="video" 
+           data-format="16:9"
            data-src="{{ .Site.BaseURL }}ZK%20Cyber%20Demo%201.1.mp4" 
            data-title="ZK Cyber: Sci-Fi Environment Demo" 
            data-client="3D TECH DEMO"
@@ -415,7 +234,7 @@
         </div>
         <div class="card-info">
           <div>
-            <div class="card-category-tag">3D WORLDS</div>
+            <div class="card-category-tag">3D WORLDS • 16:9</div>
             <div class="card-title">ZK Cyber: Sci-Fi Environment</div>
           </div>
           <div class="card-meta-line">
@@ -425,67 +244,68 @@
         </div>
       </div>
 
-      <!-- Asset 12: ZKBTC Demo Motion -->
+      <!-- 5. ZK Mountain Procedural Landscape (16:9 3D World) -->
       <div class="playlist-card" 
            data-type="video" 
-           data-src="{{ .Site.BaseURL }}ZKBTC%20DEMO%20FINAL%201.3.mp4" 
-           data-title="ZKBTC: Procedural 3D Network" 
-           data-client="CRYPTO PROTOCOL"
+           data-format="16:9"
+           data-src="{{ .Site.BaseURL }}ZK%20MOUNTAIN%201.0.mp4" 
+           data-title="ZK Mountain: Procedural Landscape" 
+           data-client="ENVIRONMENT EXPLORATION"
            data-category="motion"
-           data-role="3D MOTION GRAPHICS ARTIST"
-           data-desc="Cryptographic network visualization with particle node propagation, laser illumination passes, and energetic speed ramps."
-           data-pipeline="PARTICLE SIMULATION / AE"
-           data-tools="CINEMA 4D / TRAPCODE"
-           data-time="00:42">
+           data-role="3D TERRAIN & VOLUMETRIC ARTIST"
+           data-desc="Photorealistic mountain range generation using procedural heightfields, photogrammetry rock assets, realistic cloud simulation, and Octane sky illumination."
+           data-pipeline="UNREAL 5.4 / OCTANE"
+           data-tools="UNREAL / WORLD MACHINE"
+           data-time="00:52">
         <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}ZKBTC%20DEMO%20FINAL%201.3.mp4" muted loop></video>
-          <span class="card-duration-badge">00:42</span>
+          <video src="{{ .Site.BaseURL }}ZK%20MOUNTAIN%201.0.mp4" muted loop></video>
+          <span class="card-duration-badge">00:52</span>
         </div>
         <div class="card-info">
           <div>
-            <div class="card-category-tag">3D WORLDS</div>
-            <div class="card-title">ZKBTC: Procedural 3D Network</div>
+            <div class="card-category-tag">3D WORLDS • 16:9</div>
+            <div class="card-title">ZK Mountain: Procedural Terrain</div>
           </div>
           <div class="card-meta-line">
-            <span>PARTICLE DYNAMICS</span>
+            <span>PHOTOREAL TERRAIN</span>
             <span class="card-status-now">● PLAYING ON LEFT</span>
           </div>
         </div>
       </div>
 
-      <!-- Asset 13: Portfolio Background Ambient Motion -->
+      <!-- 6. ZK Water Fluid Dynamics (16:9 3D World) -->
       <div class="playlist-card" 
            data-type="video" 
-           data-src="{{ .Site.BaseURL }}PORTFOLIO%20BACKGROUND.mp4" 
-           data-title="Atmospheric Void: Ambient Motion Loop" 
-           data-client="AMBIENT CINEMATICS"
+           data-format="16:9"
+           data-src="{{ .Site.BaseURL }}ZK%20WATER%20DEMO%201%2C2.mp4" 
+           data-title="ZK Water: Fluid Dynamics Simulation" 
+           data-client="PHYSICS SIMULATION"
            data-category="motion"
-           data-role="ATMOSPHERIC LIGHTING ARTIST"
-           data-desc="Hypnotic looping background motion study with subtle star particles, deep space gradient shifts, and fluid chromatic luminescence."
-           data-pipeline="AMBIENT SHADER / 60FPS"
-           data-tools="AFTER EFFECTS / OCTANE"
-           data-time="00:30">
+           data-role="FLUID SIMULATION & SHADER ARTIST"
+           data-desc="Realistic wave simulation, surface foam dynamics, underwater refraction caustics, and physical light absorption shaders."
+           data-pipeline="FLUID DYNAMICS / OCTANE"
+           data-tools="HOUDINI / CINEMA 4D"
+           data-time="00:48">
         <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}PORTFOLIO%20BACKGROUND.mp4" muted loop></video>
-          <span class="card-duration-badge">00:30</span>
+          <video src="{{ .Site.BaseURL }}ZK%20WATER%20DEMO%201%2C2.mp4" muted loop></video>
+          <span class="card-duration-badge">00:48</span>
         </div>
         <div class="card-info">
           <div>
-            <div class="card-category-tag">3D WORLDS</div>
-            <div class="card-title">Atmospheric Void Ambient Loop</div>
+            <div class="card-category-tag">3D WORLDS • 16:9</div>
+            <div class="card-title">ZK Water: Fluid Dynamics</div>
           </div>
           <div class="card-meta-line">
-            <span>AMBIENT MOTION LOOP</span>
+            <span>CAUSTIC FLUID SIM</span>
             <span class="card-status-now">● PLAYING ON LEFT</span>
           </div>
         </div>
       </div>
 
-      <!-- SECTION 3: COMMERCIAL & TECH PRODUCT MOTION -->
-
-      <!-- Asset 14: TrustSwap Launchpad Commercial -->
+      <!-- 7. TrustSwap Launchpad (16:9 Commercial) -->
       <div class="playlist-card" 
            data-type="video" 
+           data-format="16:9"
            data-src="{{ .Site.BaseURL }}TrustSwap%20Launchpad%20Animation%20Launch%20Video%20Final%200.4.mp4" 
            data-title="TrustSwap Launchpad: Commercial Motion" 
            data-client="FINTECH COMMERCIAL"
@@ -501,7 +321,7 @@
         </div>
         <div class="card-info">
           <div>
-            <div class="card-category-tag">COMMERCIAL & TECH</div>
+            <div class="card-category-tag">COMMERCIAL • 16:9</div>
             <div class="card-title">TrustSwap Launchpad Commercial</div>
           </div>
           <div class="card-meta-line">
@@ -511,311 +331,79 @@
         </div>
       </div>
 
-      <!-- Asset 15: Polygon Ecosystem Commercial Explainer -->
-      <div class="playlist-card" 
+      <!-- 8. Loonie Hour Kinetic Short Form (9:16 Vertical — NO THUMBNAIL ON RIGHT) -->
+      <div class="playlist-card no-thumb" 
            data-type="video" 
-           data-src="{{ .Site.BaseURL }}All_Roads_Lead_To_Polygon_Final%203.2.mp4" 
-           data-title="Polygon: All Roads Lead to Polygon" 
-           data-client="WEB3 ECOSYSTEM"
-           data-category="commercial"
-           data-role="MOTION GRAPHICS DIRECTOR & COLORIST"
-           data-desc="Flagship ecosystem explainer featuring modular geometric highways, isometric 3D architectural representations, and rhythmic electronic soundtrack pacing."
-           data-pipeline="ISOMETRIC 3D / AE"
-           data-tools="CINEMA 4D / AFTER EFFECTS"
-           data-time="01:08">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}All_Roads_Lead_To_Polygon_Final%203.2.mp4" muted loop></video>
-          <span class="card-duration-badge">01:08</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">COMMERCIAL & TECH</div>
-            <div class="card-title">Polygon: All Roads Lead to Polygon</div>
-          </div>
-          <div class="card-meta-line">
-            <span>3D ECOSYSTEM EXPLAINER</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 16: New Bridge Page Render -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}New%20Bridge%20Page%20Render%202.0.mp4" 
-           data-title="Bridge Protocol: 3D Interface Render" 
-           data-client="FINTECH PRODUCT"
-           data-category="commercial"
-           data-role="3D UI MOTION DESIGNER"
-           data-desc="Futuristic 3D user interface animation depicting cross-chain bridge telemetry, glowing transaction conduits, and micro-interaction states."
-           data-pipeline="3D UI / GLASSMORPHISM"
-           data-tools="AFTER EFFECTS / C4D"
-           data-time="00:32">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}New%20Bridge%20Page%20Render%202.0.mp4" muted loop></video>
-          <span class="card-duration-badge">00:32</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">COMMERCIAL & TECH</div>
-            <div class="card-title">Bridge Protocol: 3D UI Render</div>
-          </div>
-          <div class="card-meta-line">
-            <span>GLASSMORPHIC 3D UI</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 17: New Swap Page Render -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}New%20Swap%20Page%20Render%203.0.mp4" 
-           data-title="Swap DEX Protocol: 3D Motion Visualization" 
-           data-client="TECH PRODUCT VIDEO"
-           data-category="commercial"
-           data-role="3D MOTION DESIGNER"
-           data-desc="Smooth glassmorphic card flips, fluid token exchange animations, specular light glints, and clean digital typography."
-           data-pipeline="PRODUCT MOTION / OCTANE"
-           data-tools="AFTER EFFECTS / CINEMA 4D"
-           data-time="00:34">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}New%20Swap%20Page%20Render%203.0.mp4" muted loop></video>
-          <span class="card-duration-badge">00:34</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">COMMERCIAL & TECH</div>
-            <div class="card-title">Swap DEX: 3D Product Motion</div>
-          </div>
-          <div class="card-meta-line">
-            <span>PRODUCT VISUALIZATION</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECTION 4: YOUTUBE & SHORT FORM KINETIC EDITS -->
-
-      <!-- Asset 18: Loonie Hour Clip 1 -->
-      <div class="playlist-card" 
-           data-type="video" 
+           data-format="9:16"
            data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_1.mp4" 
-           data-title="Loonie Hour: Kinetic Short Form 01" 
+           data-title="Loonie Hour: Kinetic Short Form Edit 01" 
            data-client="ENTERTAINMENT CHANNEL"
            data-category="shortform"
            data-role="LEAD VIDEO EDITOR & MOTION DESIGNER"
-           data-desc="Fast-paced editorial cutdown featuring dynamic graphic overlays, synchronized typography animations, sound effect accents, and high-retention social pacing."
+           data-desc="Fast-paced 9:16 vertical editorial cutdown featuring dynamic graphic overlays, synchronized typography animations, sound effect accents, and high-retention social pacing."
            data-pipeline="AFTER EFFECTS / PREMIERE"
            data-tools="PREMIERE / AE / RESOLVE"
            data-time="00:48">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Loonie_Hour_clip_1.mp4" muted loop></video>
-          <span class="card-duration-badge">00:48</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">Loonie Hour: Kinetic Edit 01</div>
+        <div class="card-info" style="grid-column: 1 / -1;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="card-category-tag" style="color: var(--amber-core); font-weight: 600;">📱 9:16 VERTICAL SHORT FORM</div>
+            <span class="card-duration-pill">00:48</span>
           </div>
+          <div class="card-title">Loonie Hour: Kinetic Short Form 01</div>
           <div class="card-meta-line">
-            <span>HIGH RETENTION EDIT</span>
+            <span>HIGH RETENTION PACING // 9:16</span>
             <span class="card-status-now">● PLAYING ON LEFT</span>
           </div>
         </div>
       </div>
 
-      <!-- Asset 19: Loonie Hour Special Cutdown -->
-      <div class="playlist-card" 
+      <!-- 9. LDA Aggregator Highlight Sequence (9:16 Vertical — NO THUMBNAIL ON RIGHT) -->
+      <div class="playlist-card no-thumb" 
            data-type="video" 
-           data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_1_5-29-26.mp4" 
-           data-title="Loonie Hour: Special Edition Cut" 
-           data-client="YOUTUBE TALENT"
-           data-category="shortform"
-           data-role="VIDEO EDITOR & SOUND DESIGNER"
-           data-desc="Optimized social media cutdown built with rapid visual hooks, tight jump cuts, custom sound effect risers, and branded visual title cards."
-           data-pipeline="VIRAL SOCIAL FORMAT"
-           data-tools="PREMIERE / RESOLVE"
-           data-time="00:55">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Loonie_Hour_clip_1_5-29-26.mp4" muted loop></video>
-          <span class="card-duration-badge">00:55</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">Loonie Hour: Special Edition</div>
-          </div>
-          <div class="card-meta-line">
-            <span>VIRAL RETENTION PACING</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 20: Loonie Hour Clip 2 -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_2.mp4" 
-           data-title="Loonie Hour: Kinetic Short Form 02" 
-           data-client="MEDIA SHOW"
-           data-category="shortform"
-           data-role="VIDEO EDITOR & COLORIST"
-           data-desc="Short form vertical and horizontal cutdown showcasing punchy visual gags, motion tracked text callouts, and clean dialogue balance."
-           data-pipeline="SHORT FORM EDITING"
-           data-tools="PREMIERE / AFTER EFFECTS"
-           data-time="00:38">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Loonie_Hour_clip_2.mp4" muted loop></video>
-          <span class="card-duration-badge">00:38</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">Loonie Hour: Kinetic Edit 02</div>
-          </div>
-          <div class="card-meta-line">
-            <span>DYNAMIC TEXT CALLOUTS</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 21: Loonie Hour Clip 3 -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_3.mp4" 
-           data-title="Loonie Hour: Kinetic Short Form 03" 
-           data-client="CONTENT CREATOR"
-           data-category="shortform"
-           data-role="POST-PRODUCTION EDITOR"
-           data-desc="High-velocity storytelling sequence with custom transitions, meme integrations, audio sweetening, and dynamic zoom punch-ins."
-           data-pipeline="HIGH SPEED POST"
-           data-tools="PREMIERE PRO / AUDITION"
-           data-time="00:40">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Loonie_Hour_clip_3.mp4" muted loop></video>
-          <span class="card-duration-badge">00:40</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">Loonie Hour: Kinetic Edit 03</div>
-          </div>
-          <div class="card-meta-line">
-            <span>PUNCH-IN ZOOM PACING</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 22: LDA Agg Clips Final Sequence -->
-      <div class="playlist-card" 
-           data-type="video" 
+           data-format="9:16"
            data-src="{{ .Site.BaseURL }}LDA%20Agg%20CLIPS%20FINAL%20.mp4" 
-           data-title="LDA Aggregator: Highlight Sequence" 
+           data-title="LDA Aggregator: Viral Highlight Sequence" 
            data-client="HIGHLIGHT MONTAGE"
            data-category="shortform"
-           data-role="LEAD VIDEO EDITOR"
-           data-desc="Fast-cut highlight reel combining high-impact clips, speed ramps, visual flares, and synchronized rhythmic beats."
+           data-role="LEAD VIDEO EDITOR & SOUND DESIGNER"
+           data-desc="Fast-cut 9:16 vertical highlight reel combining high-impact clips, speed ramps, visual flares, and synchronized rhythmic beats."
            data-pipeline="MONTAGE PACING / 60FPS"
            data-tools="PREMIERE / AFTER EFFECTS"
            data-time="00:50">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}LDA%20Agg%20CLIPS%20FINAL%20.mp4" muted loop></video>
-          <span class="card-duration-badge">00:50</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">LDA Aggregator Highlights</div>
+        <div class="card-info" style="grid-column: 1 / -1;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="card-category-tag" style="color: var(--amber-core); font-weight: 600;">📱 9:16 VERTICAL SHORT FORM</div>
+            <span class="card-duration-pill">00:50</span>
           </div>
+          <div class="card-title">LDA Aggregator: Highlight Sequence</div>
           <div class="card-meta-line">
-            <span>RHYTHMIC MONTAGE</span>
+            <span>RHYTHMIC MONTAGE // 9:16</span>
             <span class="card-status-now">● PLAYING ON LEFT</span>
           </div>
         </div>
       </div>
 
-      <!-- Asset 23: Gold Market Documentary & Explainer -->
-      <div class="playlist-card" 
+      <!-- 10. Gold Market Documentary & Explainer (9:16 Vertical — NO THUMBNAIL ON RIGHT) -->
+      <div class="playlist-card no-thumb" 
            data-type="video" 
+           data-format="9:16"
            data-src="{{ .Site.BaseURL }}Gold%20Market-%20Why%20Its%20Purpose%20Has%20Changed.mp4" 
-           data-title="Gold Market: Documentary & Explainer" 
+           data-title="Gold Market: Documentary Explainer" 
            data-client="COMMERCIAL / MEDIA"
            data-category="shortform"
            data-role="DOCUMENTARY EDITOR & ANIMATOR"
-           data-desc="Editorial documentary explainer combining historical archival footage, 2D/3D motion graphics, kinetic chart representations, and clean narrative flow."
+           data-desc="9:16 vertical documentary explainer combining historical archival footage, 2D/3D motion graphics, kinetic chart representations, and clean narrative flow."
            data-pipeline="2D/3D MOTION POST"
            data-tools="PREMIERE / AFTER EFFECTS"
            data-time="01:20">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Gold%20Market-%20Why%20Its%20Purpose%20Has%20Changed.mp4" muted loop></video>
-          <span class="card-duration-badge">01:20</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">Gold Market: Explainer Motion</div>
+        <div class="card-info" style="grid-column: 1 / -1;">
+          <div style="display: flex; align-items: center; justify-content: space-between;">
+            <div class="card-category-tag" style="color: var(--amber-core); font-weight: 600;">📱 9:16 VERTICAL SHORT FORM</div>
+            <span class="card-duration-pill">01:20</span>
           </div>
+          <div class="card-title">Gold Market: Documentary Explainer</div>
           <div class="card-meta-line">
-            <span>DOCUMENTARY EXPLAINER</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 24: Bitcoin Broken Narrative Explainer -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}Bitcoin%27s%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" 
-           data-title="Bitcoin Narrative: Motion Explainer" 
-           data-client="FINANCIAL MEDIA"
-           data-category="shortform"
-           data-role="MOTION GRAPHICS & VIDEO EDITOR"
-           data-desc="In-depth financial motion analysis combining animated market index lines, custom infographic motion, and high-retention video pacing."
-           data-pipeline="FINANCIAL INFOGRAPHICS / AE"
-           data-tools="AFTER EFFECTS / PREMIERE"
-           data-time="01:15">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}Bitcoin%27s%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" muted loop></video>
-          <span class="card-duration-badge">01:15</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">Bitcoin Narrative Explainer</div>
-          </div>
-          <div class="card-meta-line">
-            <span>INFOGRAPHIC MOTION</span>
-            <span class="card-status-now">● PLAYING ON LEFT</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Asset 25: BC Hydro Power Policy Reversal -->
-      <div class="playlist-card" 
-           data-type="video" 
-           data-src="{{ .Site.BaseURL }}BC%20Hydro%27s%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" 
-           data-title="BC Hydro: Investigative Explainer" 
-           data-client="INVESTIGATIVE MEDIA"
-           data-category="shortform"
-           data-role="DOCUMENTARY EDITOR & SOUND MIXER"
-           data-desc="Investigative journalism video edit with animated archival documents, motion highlighted quotes, dynamic sound mix, and engaging visual hooks."
-           data-pipeline="DOCUMENTARY EDITING"
-           data-tools="PREMIERE / RESOLVE / AUDITION"
-           data-time="01:18">
-        <div class="card-thumb-frame">
-          <video src="{{ .Site.BaseURL }}BC%20Hydro%27s%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" muted loop></video>
-          <span class="card-duration-badge">01:18</span>
-        </div>
-        <div class="card-info">
-          <div>
-            <div class="card-category-tag">YOUTUBE & SHORT FORM</div>
-            <div class="card-title">BC Hydro: Power Policy Explainer</div>
-          </div>
-          <div class="card-meta-line">
-            <span>INVESTIGATIVE EDIT</span>
+            <span>DOCUMENTARY MOTION // 9:16</span>
             <span class="card-status-now">● PLAYING ON LEFT</span>
           </div>
         </div>
