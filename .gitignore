@@ -38,6 +38,5 @@ dist/
 
 # Test coverage
 coverage/
-/static
 /.agents
 /.codex
