@@ -131,13 +131,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Commission Brief Modal Dialog
+  // Contact & Project Inquiry Modal Dialog
   const briefModal = document.getElementById('brief-modal');
   const btnOpenBrief = document.getElementById('btn-open-brief');
+  const btnFooterOpenBrief = document.getElementById('btn-footer-open-brief');
   const btnCloseModal = document.getElementById('btn-close-modal');
+  const btnDispatchEmail = document.getElementById('btn-dispatch-email');
 
   if (btnOpenBrief && briefModal) {
     btnOpenBrief.addEventListener('click', () => {
+      briefModal.classList.add('open');
+    });
+  }
+  if (btnFooterOpenBrief && briefModal) {
+    btnFooterOpenBrief.addEventListener('click', () => {
       briefModal.classList.add('open');
     });
   }
@@ -149,6 +156,30 @@ document.addEventListener('DOMContentLoaded', () => {
   if (briefModal) {
     briefModal.addEventListener('click', (e) => {
       if (e.target === briefModal) briefModal.classList.remove('open');
+    });
+  }
+
+  if (btnDispatchEmail) {
+    btnDispatchEmail.addEventListener('click', () => {
+      const name = (document.getElementById('contact-name')?.value || '').trim();
+      const email = (document.getElementById('contact-email')?.value || '').trim();
+      const msg = (document.getElementById('contact-message')?.value || '').trim();
+
+      if (!email && !msg) {
+        window.location.href = 'mailto:donye3d@gmail.com';
+        return;
+      }
+
+      const subject = encodeURIComponent(`Project Inquiry from ${name || 'Client'}`);
+      const body = encodeURIComponent(
+        `Hi Donye,\n\n${msg}\n\n---\nFrom: ${name || 'Anonymous'}\nEmail: ${email || 'Not provided'}`
+      );
+
+      window.location.href = `mailto:donye3d@gmail.com?subject=${subject}&body=${body}`;
+
+      setTimeout(() => {
+        if (briefModal) briefModal.classList.remove('open');
+      }, 500);
     });
   }
 
