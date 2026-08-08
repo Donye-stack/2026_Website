@@ -38,6 +38,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
 
+  // Initial State: Apply 'ALL WORK (10)' filter showing only the 10 featured items
+  rows.forEach((row) => {
+    const inAll = row.getAttribute('data-in-all') === 'true';
+    if (inAll) {
+      row.style.display = 'block';
+    } else {
+      row.style.display = 'none';
+      row.classList.remove('expanded');
+    }
+  });
+
   // Row Expand / Collapse Toggle on Click
   rows.forEach(row => {
     const summaryBar = row.querySelector('.row-summary-bar');
@@ -77,7 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
       rows.forEach(row => {
         const cat = row.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
+        const inAll = row.getAttribute('data-in-all') === 'true';
+
+        let show = false;
+        if (filter === 'all') {
+          show = inAll;
+        } else {
+          show = (cat === filter);
+        }
+
+        if (show) {
           row.style.display = 'block';
           visibleCount++;
           if (!firstExpanded) {
@@ -87,6 +107,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (v) v.play().catch(() => {});
           } else {
             row.classList.remove('expanded');
+            const v = row.querySelector('video');
+            if (v) v.pause();
           }
         } else {
           row.style.display = 'none';
