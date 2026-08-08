@@ -1,795 +1,632 @@
-<!-- Ambient Looping Video Background (PRJCT ESCP_CON_1.mp4) with Liquid Glass Caustics -->
+<!-- Ambient Looping Video Background (PRJCT ESCP_CON_1.mp4) with High-Translucency Liquid Glass Caustics -->
 <div class="ambient-video-background">
   <video class="bg-video-element" src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1.mp4" autoplay muted loop playsinline></video>
   <div class="bg-video-overlay"></div>
   <div class="liquid-caustics-mesh"></div>
 </div>
 
+<!-- Luminous Prismatic Glow Spheres -->
+<div class="caustic-ambient-1"></div>
+<div class="caustic-ambient-2"></div>
+<div class="caustic-ambient-3"></div>
+
 <!-- Main Rowan-Style Portfolio Stage -->
 <main class="main-wrapper">
   
-  <!-- ROWAN HERO SECTION: Large "WELCOME" Header with Liquid Glass Light Refraction (No audience, rating, status, or location in header) -->
-  <section class="rowan-hero-section">
-    <div class="hero-content-wrapper">
-      <div class="hero-content">
-        
-        <!-- Top Row: Big Typographic WELCOME Reveal -->
-        <div class="hero-top-row">
-          <div class="hero-welcome-wrapper">
-            <h1 class="rowan-welcome-title">WELCOME</h1>
-          </div>
-          <div class="hero-role-block">
-            <div class="hero-lead-role">Senior Video Editor &amp; 3D Motion Graphics Director</div>
-            <div class="hero-statement">
-              Fusing cinematic pacing, real-time Unreal Engine 5.4 cinematics, and high-retention creator post-production.
-            </div>
-          </div>
-        </div>
-
-        <!-- Bottom Discipline Sub-Bar (Rowan-Style Disciplines) -->
-        <div class="hero-disciplines-row">
-          <div class="discipline-item"><span class="discipline-dot"></span> Game Trailers</div>
-          <div class="discipline-item"><span class="discipline-dot"></span> Unreal Engine 5.4</div>
-          <div class="discipline-item"><span class="discipline-dot"></span> 3D Procedural Worlds</div>
-          <div class="discipline-item"><span class="discipline-dot"></span> YouTube Post-Production</div>
-          <div class="discipline-item"><span class="discipline-dot"></span> 9:16 High-Retention Motion</div>
-        </div>
-      </div>
-    </div>
+  <!-- CENTERED WELCOME HERO (Monumental Spectral Light Refraction, Clean without Eyebrows or Sub-Bars) -->
+  <section class="spectral-hero-section">
+    <div class="spectral-halo"></div>
+    <h1 class="spectral-welcome-title">WELCOME</h1>
+    <div class="spectral-line"></div>
+    <a href="#works-stage" class="hero-scroll-indicator" style="text-decoration: none; margin-top: 24px; z-index: 2;">
+      <span>↓ LETS CREATE YOUR VISION</span>
+    </a>
   </section>
 
-
-  <!-- ROWAN SELECTED WORKS: 2-Column Liquid Glass Showcase & Interactive Playlist -->
-  <section class="rowan-works-section" id="works">
-    <div class="section-header-bar">
+  <!-- SELECTED WORKS: Full-Width Expandable Liquid Glass Project Rows (Pipeline & Software Only) -->
+  <section class="rowan-works-container" id="works-stage">
+    <div class="section-header-bar" style="border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 16px; margin-bottom: 24px;">
       <div class="section-title-wrapper">
         <span class="mono-label">[01]</span>
-        <h2 class="section-heading">Selected Works &amp; Interactive Showcase</h2>
+        <h2 class="section-heading">Selected Works &amp; Production Portfolio</h2>
       </div>
-      <div class="section-subtext">CLICK ANY PROJECT TO STREAM ON LEFT</div>
+      <div class="section-subtext" id="active-filter-subtext">CLICK ANY PROJECT ROW TO EXPAND CINEMA PLAYER</div>
     </div>
 
-    <div class="portfolio-editor-grid">
-      
-      <!-- LEFT COLUMN: The Active Showcase Viewport & Media Player (Adapts 16:9 / 9:16) -->
-      <div class="showcase-column">
-        <div class="showcase-liquid-frame" id="showcase-frame">
-          <div class="showcase-ambient-aura"></div>
-          
-          <div class="showcase-media-container mode-16-9" id="showcase-media-container">
-            <video 
-              id="main-showcase-video"
-              class="showcase-video" 
-              src="{{ .Site.BaseURL }}All_Roads_Lead_To_Polygon_Final%203.2.mp4" 
-              autoplay 
-              muted 
-              loop 
-              playsinline>
-            </video>
-
-            <!-- Video Top Overlay HUD -->
-            <div class="showcase-video-overlay">
-              <span class="active-badge-pill" id="active-badge-text">
-                <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
-                SHOWCASE: Blargis: Black Out Jack Trailer
-              </span>
-              <span class="timecode-pill" id="active-timecode">00:00 / 01:20</span>
-            </div>
-          </div>
-
-          <!-- Video Playback & Scrubber Controls Bar -->
-          <div class="showcase-controls-bar">
-            <div class="ctrl-left">
-              <button class="play-pause-btn" id="btn-play-pause" title="Play / Pause">
-                <svg viewBox="0 0 24 24" id="play-icon"><polygon points="5,3 19,12 5,21"></polygon></svg>
-              </button>
-              <button class="liquid-btn" id="btn-mute-toggle" style="padding: 6px 12px; font-size: 10px;">
-                UNMUTE AUDIO
-              </button>
-            </div>
-
-            <!-- Timeline Scrubber -->
-            <div class="timeline-scrubber">
-              <div class="scrub-bar" id="timeline-bar">
-                <div class="scrub-fill" id="timeline-fill"></div>
-                <div class="scrub-thumb" id="timeline-thumb"></div>
-              </div>
-            </div>
-
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span class="format-badge" id="format-badge">FORMAT: 16:9 CINEMA</span>
-              <button class="liquid-btn" id="btn-fullscreen" style="padding: 6px 12px; font-size: 10px;">
-                FULLSCREEN [F]
-              </button>
-            </div>
-          </div>
+    <!-- 1. Blargis: Black Out Jack Trailer (Game Trailers) -->
+    <div class="rowan-work-row expanded" data-category="trailers">
+      <div class="row-summary-bar">
+        <span class="row-index">[01]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Blargis: Black Out Jack Trailer</div>
+          <div class="row-category-tag">GAME TRAILER • 16:9 4K</div>
         </div>
-
-        <!-- Active Project Narrative & Specs Sheet -->
-        <div class="showcase-meta-card">
-          <div class="meta-headline-row">
-            <div>
-              <div class="project-hero-title" id="meta-title">Blargis: Black Out Jack Trailer</div>
-              <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-muted); margin-top: 2px;" id="meta-role">
-                ROLE: LEAD GAME TRAILER DIRECTOR &amp; POST LEAD
-              </div>
-            </div>
-            <div class="project-client-badge" id="meta-client">GAME TRAILER</div>
+        <div class="row-role-text col-hide-mobile">LEAD TRAILER DIRECTOR &amp; POST LEAD</div>
+        <div class="row-format-badge col-hide-mobile">4K ULTRA HD</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}Blargis%20-%20BlackOut%20Jack%20Announce%20Trailer_compressed.mp4" controls autoplay muted loop playsinline></video>
           </div>
-
-          <p class="project-narrative" id="meta-description">
-            High-octane official launch trailer for Blargis: Black Out Jack featuring explosive gameplay capture, dynamic multi-camera pacing, kinetic camera transitions, and bespoke title motion graphics.
-          </p>
-
-          <div class="project-specs-grid">
-            <div class="spec-box">
-              <div class="label">PIPELINE</div>
-              <div class="val" id="meta-pipeline">GAMEPLAY CAPTURE / 4K</div>
-            </div>
-            <div class="spec-box">
-              <div class="label">EDITING &amp; POST</div>
-              <div class="val" id="meta-tools">PREMIERE / AFTER EFFECTS</div>
-            </div>
-            <div class="spec-box">
-              <div class="label">RESOLUTION</div>
-              <div class="val">4K ULTRA HD / 60 FPS</div>
-            </div>
-            <div class="spec-box">
-              <div class="label">DELIVERABLE</div>
-              <div class="val">CINEMATICS &amp; TRAILERS</div>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Official Launch Trailer</div>
+            <p class="project-narrative">High-octane official launch trailer for Blargis: Black Out Jack featuring explosive gameplay capture, multi-camera combat pacing, kinetic camera transitions, and bespoke title motion graphics.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">GAMEPLAY CAPTURE</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">PREMIERE / AFTER EFFECTS</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
 
-      <!-- RIGHT COLUMN: Curated Playlist with all 23 media files from arneman.me/static -->
-      <div class="playlist-column">
-        <div class="playlist-header-bar">
-          <span>CURATED PLAYLIST // CLICK TO STREAM ON LEFT</span>
-          <span id="playlist-count-badge">23 ENTRIES</span>
+    <!-- 2. Alchemortis: Official Trailer (Game Trailers) -->
+    <div class="rowan-work-row" data-category="trailers">
+      <div class="row-summary-bar">
+        <span class="row-index">[02]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Alchemortis: Official Trailer</div>
+          <div class="row-category-tag">GAME TRAILER • 16:9 4K</div>
         </div>
-
-        <!-- ==================== GAME TRAILERS ==================== -->
-        <div class="playlist-card active" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}All_Roads_Lead_To_Polygon_Final%203.2.mp4" 
-             data-title="Blargis: Black Out Jack Trailer" 
-             data-client="INDIE GAME STUDIO"
-             data-category="trailers"
-             data-role="LEAD GAME TRAILER DIRECTOR &amp; POST LEAD"
-             data-desc="High-octane official launch trailer for Blargis: Black Out Jack featuring explosive gameplay capture, dynamic multi-camera pacing, kinetic camera transitions, and bespoke title motion graphics."
-             data-pipeline="GAMEPLAY CAPTURE / 4K"
-             data-tools="PREMIERE / AFTER EFFECTS"
-             data-time="01:20">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}All_Roads_Lead_To_Polygon_Final%203.2.mp4" muted loop></video>
-            <span class="card-duration-badge">01:20</span>
+        <div class="row-role-text col-hide-mobile">TRAILER EDITOR &amp; MOTION DESIGN</div>
+        <div class="row-format-badge col-hide-mobile">FIREBELLEY GAMES</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}Alchemortis%20trailer%201.1.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">GAME TRAILER • 16:9</div>
-              <div class="card-title">Blargis: Black Out Jack Trailer</div>
-            </div>
-            <div class="card-meta-line">
-              <span>OFFICIAL LAUNCH TRAILER // 4K</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Official Studio Trailer</div>
+            <p class="project-narrative">Official launch trailer for Firebelley Games' Alchemortis showcasing rapid combat editing, boss encounter choreography, and stylized UI motion graphics.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">GAMEPLAY CAPTURE</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">PREMIERE / AFTER EFFECTS</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Alchemortis%20trailer%201.1.mp4" 
-             data-title="Alchemortis: Official Trailer" 
-             data-client="FIREBELLEY GAMES"
-             data-category="trailers"
-             data-role="TRAILER EDITOR &amp; MOTION GRAPHICS"
-             data-desc="Official launch trailer for Alchemortis by Firebelley Games, featuring bespoke gameplay capture, dynamic combat editing, and custom UI motion graphics."
-             data-pipeline="GAMEPLAY VOD / 4K 60FPS"
-             data-tools="PREMIERE / AFTER EFFECTS"
-             data-time="01:10">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Alchemortis%20trailer%201.1.mp4" muted loop></video>
-            <span class="card-duration-badge">01:10</span>
+    <!-- 3. Project Escape: Sequence 01 (3D Worlds) -->
+    <div class="rowan-work-row" data-category="motion">
+      <div class="row-summary-bar">
+        <span class="row-index">[03]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Project Escape: Sequence 01</div>
+          <div class="row-category-tag">3D WORLDS • UNREAL ENGINE 5.4</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">LEAD 3D ENVIRONMENT &amp; CINEMATICS</div>
+        <div class="row-format-badge col-hide-mobile">NANITE / LUMEN</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">GAME TRAILER • 16:9</div>
-              <div class="card-title">Alchemortis: Official Trailer</div>
-            </div>
-            <div class="card-meta-line">
-              <span>GAMEPLAY EDIT // 4K</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">High-Speed Unreal Cinematics</div>
+            <p class="project-narrative">Procedural environment dynamics and high-speed cinematic flythrough rendered in Unreal Engine 5.4 with Nanite geometry and volumetric atmospheric lighting.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">REAL-TIME CINEMATICS</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">UNREAL ENGINE 5.4 / AFTER EFFECTS</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- ==================== 3D WORLDS ==================== -->
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1.mp4" 
-             data-title="Project Escape: Sequence 01" 
-             data-client="3D ENVIRONMENT &amp; CINEMATICS"
-             data-category="motion"
-             data-role="LEAD 3D ENVIRONMENT ARTIST &amp; CINEMATICS"
-             data-desc="Procedural environment dynamics and high-speed cinematic flythrough rendered in Unreal Engine 5.4 with Nanite geometry and volumetric atmospheric lighting."
-             data-pipeline="UNREAL 5.4 / NANITE"
-             data-tools="PREMIERE / AFTER EFFECTS"
-             data-time="01:15">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1.mp4" muted loop></video>
-            <span class="card-duration-badge">01:15</span>
+    <!-- 4. ZK Mountain: Procedural Terrain (3D Worlds) -->
+    <div class="rowan-work-row" data-category="motion">
+      <div class="row-summary-bar">
+        <span class="row-index">[04]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">ZK Mountain: Procedural Terrain</div>
+          <div class="row-category-tag">3D WORLDS • PROCEDURAL TERRAIN</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">3D TERRAIN &amp; VOLUMETRIC ARTIST</div>
+        <div class="row-format-badge col-hide-mobile">OCTANE RENDER</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}ZK%20MOUNTAIN%201.0.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">3D WORLDS • 16:9</div>
-              <div class="card-title">Project Escape: Sequence 01</div>
-            </div>
-            <div class="card-meta-line">
-              <span>UNREAL 5.4 // NANITE 3D</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Photoreal Alpine Worldbuilding</div>
+            <p class="project-narrative">Photorealistic mountain range generation using procedural heightfields, photogrammetry rock assets, realistic cloud simulation, and Octane sky illumination.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">PROCEDURAL TERRAIN GENERATION</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">WORLD MACHINE / CINEMA 4D / OCTANE</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1%20(1).mp4" 
-             data-title="Project Escape: Sequence 02" 
-             data-client="3D ENVIRONMENT &amp; CINEMATICS"
-             data-category="motion"
-             data-role="3D CINEMATICS &amp; LIGHTING ARTIST"
-             data-desc="Alternate high-velocity flythrough sequence showcasing dynamic volumetric fog, camera motion blur, and Nanite mesh streaming."
-             data-pipeline="UNREAL 5.4 / VOLUMETRICS"
-             data-tools="UNREAL 5.4 / AFTER EFFECTS"
-             data-time="01:15">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}PRJCT%20ESCP_CON_1%20(1).mp4" muted loop></video>
-            <span class="card-duration-badge">01:15</span>
+    <!-- 5. ZK Water: Fluid Dynamics (3D Worlds) -->
+    <div class="rowan-work-row" data-category="motion">
+      <div class="row-summary-bar">
+        <span class="row-index">[05]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">ZK Water: Fluid Dynamics Simulation</div>
+          <div class="row-category-tag">3D WORLDS • FLUID DYNAMICS</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">FLUID SIMULATION &amp; SHADER ARTIST</div>
+        <div class="row-format-badge col-hide-mobile">HOUDINI FX</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}ZK%20WATER%20DEMO%201%2C2.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">3D WORLDS • 16:9</div>
-              <div class="card-title">Project Escape: Sequence 02</div>
-            </div>
-            <div class="card-meta-line">
-              <span>VOLUMETRIC FLYTHROUGH</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Caustic Light Refraction Physics</div>
+            <p class="project-narrative">Realistic wave simulation, surface foam dynamics, underwater refraction caustics, and physical light absorption shaders.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">FLUID DYNAMICS SIMULATION</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">HOUDINI / OCTANE RENDER</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}ZK%20MOUNTAIN%201.0.mp4" 
-             data-title="ZK Mountain: Procedural Landscape" 
-             data-client="ENVIRONMENT EXPLORATION"
-             data-category="motion"
-             data-role="3D TERRAIN &amp; VOLUMETRIC ARTIST"
-             data-desc="Photorealistic mountain range generation using procedural heightfields, photogrammetry rock assets, realistic cloud simulation, and Octane sky illumination."
-             data-pipeline="UNREAL 5.4 / OCTANE"
-             data-tools="UNREAL / WORLD MACHINE"
-             data-time="00:52">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}ZK%20MOUNTAIN%201.0.mp4" muted loop></video>
-            <span class="card-duration-badge">00:52</span>
+    <!-- 6. BC Hydro Explainer (YouTube Content) -->
+    <div class="rowan-work-row" data-category="youtube">
+      <div class="row-summary-bar">
+        <span class="row-index">[06]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">BC Hydro: Policy Reversal Explainer</div>
+          <div class="row-category-tag" style="color: #ff5555;">▶ YOUTUBE CONTENT • DOCUMENTARY</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">LEAD VIDEO EDITOR &amp; NARRATIVE LEAD</div>
+        <div class="row-format-badge col-hide-mobile">DOCUMENTARY ESSAY</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}BC%20Hydro's%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">3D WORLDS • 16:9</div>
-              <div class="card-title">ZK Mountain: Procedural Terrain</div>
-            </div>
-            <div class="card-meta-line">
-              <span>PHOTOREAL TERRAIN</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Investigative Documentary Explainer</div>
+            <p class="project-narrative">In-depth investigative documentary explainer examining energy infrastructure decisions, combining motion graphics, clean data breakdowns, and compelling pacing.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">DOCUMENTARY POST-PRODUCTION</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">PREMIERE PRO / AFTER EFFECTS</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}ZK%20WATER%20DEMO%201%2C2.mp4" 
-             data-title="ZK Water: Fluid Dynamics Simulation" 
-             data-client="PHYSICS SIMULATION"
-             data-category="motion"
-             data-role="FLUID SIMULATION &amp; SHADER ARTIST"
-             data-desc="Realistic wave simulation, surface foam dynamics, underwater refraction caustics, and physical light absorption shaders."
-             data-pipeline="FLUID DYNAMICS / OCTANE"
-             data-tools="HOUDINI / CINEMA 4D"
-             data-time="00:48">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}ZK%20WATER%20DEMO%201%2C2.mp4" muted loop></video>
-            <span class="card-duration-badge">00:48</span>
+    <!-- 7. Bitcoin's Broken Narrative (YouTube Content) -->
+    <div class="rowan-work-row" data-category="youtube">
+      <div class="row-summary-bar">
+        <span class="row-index">[07]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Bitcoin's Broken Narrative Essay</div>
+          <div class="row-category-tag" style="color: #ff5555;">▶ YOUTUBE CONTENT • FINANCIAL ESSAY</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">DOCUMENTARY EDITOR &amp; MOTION DESIGNER</div>
+        <div class="row-format-badge col-hide-mobile">FINANCIAL ESSAY</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}Bitcoin's%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">3D WORLDS • 16:9</div>
-              <div class="card-title">ZK Water: Fluid Dynamics</div>
-            </div>
-            <div class="card-meta-line">
-              <span>CAUSTIC FLUID SIM</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Macroeconomic Visual Essay</div>
+            <p class="project-narrative">Analytical financial essay video breaking down macroeconomic shifts and market metrics with animated chart visualizations and engaging visual pacing.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">FINANCIAL ESSAY EDITING &amp; CHARTS</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">PREMIERE / AFTER EFFECTS / RESOLVE</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}ZK%20Cyber%20Demo%201.1.mp4" 
-             data-title="ZK Cyber: Sci-Fi Environment Demo" 
-             data-client="3D TECH DEMO"
-             data-category="motion"
-             data-role="3D ENVIRONMENT ARTIST &amp; COMPOSITOR"
-             data-desc="Futuristic sci-fi cybernetic environment simulation showcasing dynamic shader networks, volumetric light scattering, and camera motion tracking."
-             data-pipeline="OCTANE / HOUDINI"
-             data-tools="CINEMA 4D / AE"
-             data-time="01:05">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}ZK%20Cyber%20Demo%201.1.mp4" muted loop></video>
-            <span class="card-duration-badge">01:05</span>
+    <!-- 8. Joshua Graham Narrative (YouTube Content) -->
+    <div class="rowan-work-row" data-category="youtube">
+      <div class="row-summary-bar">
+        <span class="row-index">[08]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Joshua Graham: Cinematic Narrative</div>
+          <div class="row-category-tag" style="color: #ff5555;">▶ YOUTUBE CONTENT • NARRATIVE</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">CINEMATIC VIDEO EDITOR</div>
+        <div class="row-format-badge col-hide-mobile">60 FPS ESSAY</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}Joshua%20Graham%20CINI.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">3D WORLDS • 16:9</div>
-              <div class="card-title">ZK Cyber: Sci-Fi Environment</div>
-            </div>
-            <div class="card-meta-line">
-              <span>PROCEDURAL WORLDS</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Atmospheric Storytelling Cut</div>
+            <p class="project-narrative">Cinematic character narrative edit combining dramatic voiceover pacing, color grading, atmospheric scene transitions, and immersive audio storytelling.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">CINEMATIC NARRATIVE PACING</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">PREMIERE PRO / DAVINCI RESOLVE</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Halo%20Reach_Render_0.5.mov" 
-             data-title="Halo Reach: Volumetric Cinematic Pass" 
-             data-client="CINEMATIC RECREATION"
-             data-category="motion"
-             data-role="3D LIGHTING &amp; COMPOSITOR"
-             data-desc="Volumetric atmospheric pass and multi-layer optical compositing recreating classic sci-fi planetary combat moods."
-             data-pipeline="CINEMATIC LIGHTING"
-             data-tools="AFTER EFFECTS / BLENDER"
-             data-time="00:35">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Halo%20Reach_Render_0.5.mov" muted loop></video>
-            <span class="card-duration-badge">00:35</span>
+    <!-- 9. TrustSwap Launchpad (Commercial Motion) -->
+    <div class="rowan-work-row" data-category="commercial">
+      <div class="row-summary-bar">
+        <span class="row-index">[09]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">TrustSwap Launchpad Commercial</div>
+          <div class="row-category-tag">COMMERCIAL • 3D FINTECH PRODUCT</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">LEAD 3D COMMERCIAL ANIMATOR</div>
+        <div class="row-format-badge col-hide-mobile">3D PRODUCT MOTION</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="{{ .Site.BaseURL }}TrustSwap%20Launchpad%20Animation%20Launch%20Video%20Final%200.4.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">3D WORLDS • 16:9</div>
-              <div class="card-title">Halo Reach Cinematic Pass</div>
-            </div>
-            <div class="card-meta-line">
-              <span>VOLUMETRIC COMPOSITE</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Commercial Launch Video</div>
+            <p class="project-narrative">Commercial product launch video showcasing high-gloss 3D UI cards, token staking animations, kinetic typography, and fluid camera transitions.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">COMMERCIAL 3D PRODUCT ANIMATION</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">CINEMA 4D / OCTANE / AFTER EFFECTS</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Render%20Comp1.0.mp4" 
-             data-title="Atmospheric 3D Render Composite" 
-             data-client="3D EXPERIMENTAL LAB"
-             data-category="motion"
-             data-role="3D COMPOSITING &amp; GRADE LEAD"
-             data-desc="Multi-pass 3D render composition featuring deep depth of field, bloom refractions, and high-fidelity grade."
-             data-pipeline="OCTANE COMPOSITING"
-             data-tools="OCTANE / RESOLVE"
-             data-time="00:40">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Render%20Comp1.0.mp4" muted loop></video>
-            <span class="card-duration-badge">00:40</span>
+    <!-- 10. LDA Aggregator Highlight (Short Form 9:16) -->
+    <div class="rowan-work-row" data-category="shortform">
+      <div class="row-summary-bar">
+        <span class="row-index">[10]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">LDA Aggregator: Highlight Sequence</div>
+          <div class="row-category-tag" style="color: var(--amber-core);">📱 9:16 VERTICAL SHORT FORM</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">VERTICAL VIDEO EDITOR &amp; SOUND LEAD</div>
+        <div class="row-format-badge col-hide-mobile">9:16 VERTICAL</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player mode-9-16">
+            <video src="{{ .Site.BaseURL }}LDA%20Agg%20CLIPS%20FINAL%20.mp4" controls muted loop playsinline></video>
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">3D WORLDS • 16:9</div>
-              <div class="card-title">Atmospheric 3D Render Composite</div>
-            </div>
-            <div class="card-meta-line">
-              <span>MULTI-PASS RENDER</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          <div class="showcase-meta-card">
+            <div class="project-hero-title">Kinetic 9:16 Social Montage</div>
+            <p class="project-narrative">Fast-cut 9:16 vertical highlight reel combining high-impact clips, speed ramps, visual flares, and rhythmic montage pacing.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box">
+                <div class="label">PIPELINE</div>
+                <div class="val">HIGH-RETENTION VERTICAL MONTAGE</div>
+              </div>
+              <div class="spec-box">
+                <div class="label">SOFTWARE</div>
+                <div class="val">PREMIERE PRO / AFTER EFFECTS</div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
 
-        <!-- ==================== YOUTUBE CONTENT ==================== -->
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}BC%20Hydro's%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" 
-             data-title="BC Hydro: Policy Reversal Documentary" 
-             data-client="YOUTUBE DOCUMENTARY / EXPLAINER"
-             data-category="youtube"
-             data-role="LEAD VIDEO EDITOR &amp; NARRATIVE LEAD"
-             data-desc="In-depth investigative documentary explainer examining energy infrastructure decisions, combining motion graphics, clean data breakdowns, and compelling pacing."
-             data-pipeline="DOCUMENTARY EDITING"
-             data-tools="PREMIERE / AFTER EFFECTS"
-             data-time="01:45">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}BC%20Hydro's%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" muted loop></video>
-            <span class="card-duration-badge">01:45</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • 16:9</div>
-              <div class="card-title">BC Hydro: Policy Reversal Explainer</div>
-            </div>
-            <div class="card-meta-line">
-              <span>DOCUMENTARY EXPLAINER</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
+  </section>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Bitcoin's%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" 
-             data-title="Bitcoin Narrative: Visual Financial Essay" 
-             data-client="FINANCE ESSAY CHANNEL"
-             data-category="youtube"
-             data-role="DOCUMENTARY EDITOR &amp; MOTION DESIGNER"
-             data-desc="Analytical financial essay video breaking down macroeconomic shifts and market metrics with animated chart visualizations and engaging visual pacing."
-             data-pipeline="FINANCIAL ESSAY POST"
-             data-tools="PREMIERE / AE / RESOLVE"
-             data-time="01:30">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Bitcoin's%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" muted loop></video>
-            <span class="card-duration-badge">01:30</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • 16:9</div>
-              <div class="card-title">Bitcoin's Broken Narrative Essay</div>
+  <!-- UNIFIED YOUTUBE EXPERIENCE, REVIEWS & PARTNERED CREATOR CHANNELS SECTION (No Duplication) -->
+  <section class="youtube-showcase-section" id="youtube-experience" style="margin-top: 72px;">
+    <div class="ytjobs-verified-banner">
+      <div class="ytjobs-header-row">
+        <div class="ytjobs-brand-wrap">
+          <div class="ytjobs-icon-badge">▶</div>
+          <div>
+            <div class="ytjobs-title-text">
+              YouTube Content Experience &amp; Creator Collaborations
+              <span class="verified-check-pill">✓ YTJobs Verified</span>
             </div>
-            <div class="card-meta-line">
-              <span>FINANCIAL VIDEO ESSAY</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Joshua%20Graham%20CINI.mp4" 
-             data-title="Joshua Graham: Cinematic Narrative Edit" 
-             data-client="NARRATIVE GAMING CHANNEL"
-             data-category="youtube"
-             data-role="CINEMATIC VIDEO EDITOR"
-             data-desc="Cinematic character narrative edit combining dramatic voiceover pacing, color grading, atmospheric scene transitions, and immersive audio storytelling."
-             data-pipeline="CINEMATIC ESSAY / 60FPS"
-             data-tools="PREMIERE / DAVINCI RESOLVE"
-             data-time="01:12">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Joshua%20Graham%20CINI.mp4" muted loop></video>
-            <span class="card-duration-badge">01:12</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • 16:9</div>
-              <div class="card-title">Joshua Graham: Cinematic Narrative</div>
-            </div>
-            <div class="card-meta-line">
-              <span>NARRATIVE EDITING // 60FPS</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+            <div class="ytjobs-subtext">
+              Proven track record of editing high-retention tutorial series, documentary explainers, podcasts, and video essays for leading creators.
             </div>
           </div>
         </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Gold%20Market-%20Why%20Its%20Purpose%20Has%20Changed.mp4" 
-             data-title="Gold Market: Documentary Explainer" 
-             data-client="FINANCE &amp; DOCUMENTARY"
-             data-category="youtube"
-             data-role="DOCUMENTARY EDITOR &amp; ANIMATOR"
-             data-desc="Documentary explainer combining historical archival footage, 2D/3D motion graphics, kinetic chart representations, and clean narrative flow."
-             data-pipeline="2D/3D MOTION POST"
-             data-tools="PREMIERE / AFTER EFFECTS"
-             data-time="01:20">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Gold%20Market-%20Why%20Its%20Purpose%20Has%20Changed.mp4" muted loop></video>
-            <span class="card-duration-badge">01:20</span>
+        <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="liquid-btn primary" style="padding: 10px 20px; font-size: 12px;">
+          <span>★</span> VIEW OFFICIAL YTJOBS PROFILE ↗
+        </a>
+      </div>
+
+      <!-- Verified Talent Metrics from YTJobs -->
+      <div class="ytjobs-stats-grid">
+        <div class="ytjobs-stat-card">
+          <div class="ytjobs-stat-num">168.2<span class="accent">K+</span></div>
+          <div class="ytjobs-stat-label">Views on Edited Videos</div>
+        </div>
+        <div class="ytjobs-stat-card">
+          <div class="ytjobs-stat-num">7.27<span class="accent">K+</span></div>
+          <div class="ytjobs-stat-label">YouTube Likes Generated</div>
+        </div>
+        <div class="ytjobs-stat-card">
+          <div class="ytjobs-stat-num">10<span class="accent">/10</span></div>
+          <div class="ytjobs-stat-label">Verified Client Rating (100%)</div>
+        </div>
+        <div class="ytjobs-stat-card">
+          <div class="ytjobs-stat-num">6<span class="accent">+</span></div>
+          <div class="ytjobs-stat-label">Partnered Channels</div>
+        </div>
+      </div>
+
+      <!-- Real Verified Client Testimonials from YTJobs -->
+      <div class="ytjobs-reviews-grid">
+        <div class="yt-review-card">
+          <div class="review-quote-body">
+            &ldquo;Donye was great to work with. Not only was the final output professional and polished, he also went to great lengths to carefully plan and gather feedback throughout the process. I couldn't be happier with his work.&rdquo;
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • 16:9</div>
-              <div class="card-title">Gold Market: Purpose Explainer</div>
+          <div class="review-author-bar">
+            <div class="review-client-info" style="display: flex; align-items: center; gap: 10px;">
+              <img src="{{ .Site.BaseURL }}firebelley.jpg" alt="Firebelley Games" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,0.3);" />
+              <div>
+                <div class="review-client-name">Firebelley Games</div>
+                <div class="review-client-stats">38.5K Subscribers • 2.69M Total Views</div>
+              </div>
             </div>
-            <div class="card-meta-line">
-              <span>DOCUMENTARY MOTION GRAPHICS</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
+            <div class="review-rating-stars">★★★★★ 10/10</div>
           </div>
         </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_1.mp4" 
-             data-title="Loonie Hour: Podcast Editorial Cut 01" 
-             data-client="ENTERTAINMENT PODCAST"
-             data-category="youtube"
-             data-role="LEAD VIDEO EDITOR &amp; MOTION DESIGNER"
-             data-desc="Fast-paced editorial cutdown featuring dynamic graphic overlays, synchronized typography animations, sound accents, and high-retention social pacing."
-             data-pipeline="AFTER EFFECTS / PREMIERE"
-             data-tools="PREMIERE / AE / RESOLVE"
-             data-time="00:48">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Loonie_Hour_clip_1.mp4" muted loop></video>
-            <span class="card-duration-badge">00:48</span>
+        <div class="yt-review-card">
+          <div class="review-quote-body">
+            &ldquo;Donye is unbelievably kind and patient. He takes feedback well and is able to turn things around incredibly quickly with little supervision.&rdquo;
           </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • 16:9</div>
-              <div class="card-title">Loonie Hour: Podcast Cut 01</div>
+          <div class="review-author-bar">
+            <div class="review-client-info" style="display: flex; align-items: center; gap: 10px;">
+              <img src="{{ .Site.BaseURL }}Playable%20workshop.jpg" alt="Playable Workshop" style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1px solid rgba(255,255,255,0.3);" />
+              <div>
+                <div class="review-client-name">Playable Workshop</div>
+                <div class="review-client-stats">29.8K Subscribers • 1.3M Total Views</div>
+              </div>
             </div>
-            <div class="card-meta-line">
-              <span>PODCAST EDITORIAL</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
+            <div class="review-rating-stars">★★★★★ 10/10</div>
           </div>
         </div>
+      </div>
 
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_1_5-29-26.mp4" 
-             data-title="Loonie Hour: Extended Discussion Cut" 
-             data-client="ENTERTAINMENT PODCAST"
-             data-category="youtube"
-             data-role="LEAD VIDEO EDITOR &amp; SOUND LEAD"
-             data-desc="Extended master cut featuring multi-host video switching, dynamic nameplates, waveform animations, and clean narrative flow."
-             data-pipeline="PODCAST MASTER EDIT"
-             data-tools="PREMIERE / DAVINCI RESOLVE"
-             data-time="01:10">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}Loonie_Hour_clip_1_5-29-26.mp4" muted loop></video>
-            <span class="card-duration-badge">01:10</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • 16:9</div>
-              <div class="card-title">Loonie Hour: Extended Cut</div>
-            </div>
-            <div class="card-meta-line">
-              <span>EXTENDED MASTER EDIT</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
+      <!-- Partnered YouTube Channels with Official Logos -->
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 8px;">
+        <div style="font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em;">
+          COLLABORATED YOUTUBE CHANNELS &amp; OFFICIAL CREATOR LOGOS
         </div>
+        <div class="partner-channels-grid">
+          <!-- Playable Workshop -->
+          <a href="https://youtube.com/@playable-workshop" target="_blank" class="partner-channel-card">
+            <img src="{{ .Site.BaseURL }}Playable%20workshop.jpg" alt="Playable Workshop" class="channel-avatar-circle" />
+            <div class="channel-info">
+              <div class="channel-name">Playable Workshop</div>
+              <div class="channel-subs">29.8K Subs • Game Dev Tutorials</div>
+            </div>
+          </a>
 
-        <!-- ==================== COMMERCIAL MOTION ==================== -->
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}TrustSwap%20Launchpad%20Animation%20Launch%20Video%20Final%200.4.mp4" 
-             data-title="TrustSwap Launchpad: Commercial Motion" 
-             data-client="FINTECH COMMERCIAL"
-             data-category="commercial"
-             data-role="LEAD 3D COMMERCIAL ANIMATOR"
-             data-desc="Commercial product launch video showcasing high-gloss 3D UI cards, token staking animations, kinetic typography, and fluid camera transitions."
-             data-pipeline="COMMERCIAL 3D / OCTANE"
-             data-tools="PREMIERE / AFTER EFFECTS / C4D"
-             data-time="01:10">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}TrustSwap%20Launchpad%20Animation%20Launch%20Video%20Final%200.4.mp4" muted loop></video>
-            <span class="card-duration-badge">01:10</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">COMMERCIAL • 16:9</div>
-              <div class="card-title">TrustSwap Launchpad Commercial</div>
+          <!-- Firebelley Games -->
+          <a href="https://youtube.com/@firebelleygames" target="_blank" class="partner-channel-card">
+            <img src="{{ .Site.BaseURL }}firebelley.jpg" alt="Firebelley Games" class="channel-avatar-circle" />
+            <div class="channel-info">
+              <div class="channel-name">Firebelley Games</div>
+              <div class="channel-subs">38.5K Subs • Alchemortis Dev</div>
             </div>
-            <div class="card-meta-line">
-              <span>COMMERCIAL PRODUCT MOTION</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
+          </a>
+
+          <!-- Adam J Bell -->
+          <a href="https://youtube.com/@adamjbell" target="_blank" class="partner-channel-card">
+            <img src="{{ .Site.BaseURL }}adamjbell.jpg" alt="Adam J Bell" class="channel-avatar-circle" />
+            <div class="channel-info">
+              <div class="channel-name">Adam J Bell</div>
+              <div class="channel-subs">60.7K Subs • 3.15M Views</div>
             </div>
-          </div>
+          </a>
+
+          <!-- GamerManAdam -->
+          <a href="https://youtube.com/@gamermanadam" target="_blank" class="partner-channel-card">
+            <img src="{{ .Site.BaseURL }}gamermanadam.jpg" alt="GamerManAdam" class="channel-avatar-circle" />
+            <div class="channel-info">
+              <div class="channel-name">GamerManAdam</div>
+              <div class="channel-subs">22.8K Subs • 7.73M Views</div>
+            </div>
+          </a>
+
+          <!-- Andrew Chambers -->
+          <a href="https://youtube.com/@andrewchambers" target="_blank" class="partner-channel-card">
+            <img src="{{ .Site.BaseURL }}andrewchambers.jpg" alt="Andrew Chambers" class="channel-avatar-circle" />
+            <div class="channel-info">
+              <div class="channel-name">Andrew Chambers</div>
+              <div class="channel-subs">14.6K Subs • 713K Views</div>
+            </div>
+          </a>
+
+          <!-- tafaar -->
+          <a href="https://youtube.com/@tafaar" target="_blank" class="partner-channel-card">
+            <img src="{{ .Site.BaseURL }}tafaar.jpg" alt="tafaar" class="channel-avatar-circle" />
+            <div class="channel-info">
+              <div class="channel-name">tafaar</div>
+              <div class="channel-subs">12.3K Subs • 1.4M Views</div>
+            </div>
+          </a>
         </div>
-
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}New%20Swap%20Page%20Render%203.0.mp4" 
-             data-title="Web3 Swap Platform: 3D UI Motion" 
-             data-client="DEFI PRODUCT MOTION"
-             data-category="commercial"
-             data-role="3D UI ANIMATOR &amp; MOTION DESIGNER"
-             data-desc="High-gloss 3D interface animations, card flips, and interactive digital currency swap dynamics."
-             data-pipeline="3D UI ANIMATION"
-             data-tools="CINEMA 4D / AFTER EFFECTS"
-             data-time="00:30">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}New%20Swap%20Page%20Render%203.0.mp4" muted loop></video>
-            <span class="card-duration-badge">00:30</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">COMMERCIAL • 16:9</div>
-              <div class="card-title">Web3 Swap Platform 3D UI</div>
-            </div>
-            <div class="card-meta-line">
-              <span>3D INTERFACE MOTION</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}New%20Bridge%20Page%20Render%202.0.mp4" 
-             data-title="Bridge Protocol: FinTech Interface Motion" 
-             data-client="PROTOCOL COMMERCIAL"
-             data-category="commercial"
-             data-role="3D MOTION GRAPHICS ARTIST"
-             data-desc="Isometric holographic user interface demonstrating cross-chain digital asset bridging with sleek reflections and particle sparks."
-             data-pipeline="OCTANE UI SHADERS"
-             data-tools="C4D / AFTER EFFECTS"
-             data-time="00:25">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}New%20Bridge%20Page%20Render%202.0.mp4" muted loop></video>
-            <span class="card-duration-badge">00:25</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">COMMERCIAL • 16:9</div>
-              <div class="card-title">Bridge Protocol UI Motion</div>
-            </div>
-            <div class="card-meta-line">
-              <span>HOLOGRAPHIC 3D UI</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}QS%20Car%20Render%20Final%20.mp4" 
-             data-title="Automotive Commercial: 3D Raytraced Motion" 
-             data-client="AUTOMOTIVE STUDIO"
-             data-category="commercial"
-             data-role="AUTOMOTIVE 3D &amp; LIGHTING ARTIST"
-             data-desc="Studio automotive turntable and dynamic chassis lighting showcase featuring photorealistic clearcoat shaders and rim lighting."
-             data-pipeline="AUTOMOTIVE 3D / OCTANE"
-             data-tools="CINEMA 4D / OCTANE / AE"
-             data-time="00:32">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}QS%20Car%20Render%20Final%20.mp4" muted loop></video>
-            <span class="card-duration-badge">00:32</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">COMMERCIAL • 16:9</div>
-              <div class="card-title">Automotive 3D Motion Showcase</div>
-            </div>
-            <div class="card-meta-line">
-              <span>STUDIO RAYTRACING</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="playlist-card" 
-             data-type="video" 
-             data-format="16:9"
-             data-src="{{ .Site.BaseURL }}ZKBTC%20DEMO%20FINAL%201.3.mp4" 
-             data-title="ZKBTC Architecture: Product Motion" 
-             data-client="TECH PRODUCT VIDEO"
-             data-category="commercial"
-             data-role="3D PRODUCT ANIMATOR"
-             data-desc="High-speed product animation illustrating cryptographic proof verification, token mechanics, and animated glowing architecture."
-             data-pipeline="3D TECH PRODUCT"
-             data-tools="OCTANE / AFTER EFFECTS"
-             data-time="00:38">
-          <div class="card-thumb-frame">
-            <video src="{{ .Site.BaseURL }}ZKBTC%20DEMO%20FINAL%201.3.mp4" muted loop></video>
-            <span class="card-duration-badge">00:38</span>
-          </div>
-          <div class="card-info">
-            <div>
-              <div class="card-category-tag">COMMERCIAL • 16:9</div>
-              <div class="card-title">ZKBTC Architecture Motion</div>
-            </div>
-            <div class="card-meta-line">
-              <span>CRYPTOGRAPHIC 3D MOTION</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ==================== SHORT FORM (9:16) ==================== -->
-        <div class="playlist-card no-thumb" 
-             data-type="video" 
-             data-format="9:16"
-             data-src="{{ .Site.BaseURL }}LDA%20Agg%20CLIPS%20FINAL%20.mp4" 
-             data-title="LDA Aggregator: Viral Highlight Sequence" 
-             data-client="STREAM HIGHLIGHT MONTAGE"
-             data-category="shortform"
-             data-role="LEAD VIDEO EDITOR &amp; SOUND DESIGNER"
-             data-desc="Fast-cut 9:16 vertical highlight reel combining high-impact clips, speed ramps, visual flares, and rhythmic montage pacing."
-             data-pipeline="MONTAGE PACING / 60FPS"
-             data-tools="PREMIERE / AFTER EFFECTS"
-             data-time="00:50">
-          <div class="card-info" style="grid-column: 1 / -1;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-              <div class="card-category-tag" style="color: var(--amber-core); font-weight: 600;">📱 9:16 VERTICAL SHORT FORM</div>
-              <span class="card-duration-pill">00:50</span>
-            </div>
-            <div class="card-title">LDA Aggregator: Highlight Sequence</div>
-            <div class="card-meta-line">
-              <span>RHYTHMIC MONTAGE // 9:16</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="playlist-card no-thumb" 
-             data-type="video" 
-             data-format="9:16"
-             data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_2.mp4" 
-             data-title="Loonie Hour: Social Cutdown 02" 
-             data-client="PODCAST SOCIAL CLIPS"
-             data-category="shortform"
-             data-role="VERTICAL VIDEO EDITOR"
-             data-desc="High-retention 9:16 vertical podcast edit with animated captions, punch zooms, and rapid-fire visual hooks."
-             data-pipeline="VERTICAL CAPTIONS / 9:16"
-             data-tools="PREMIERE / AFTER EFFECTS"
-             data-time="00:45">
-          <div class="card-info" style="grid-column: 1 / -1;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-              <div class="card-category-tag" style="color: var(--amber-core); font-weight: 600;">📱 9:16 VERTICAL SHORT FORM</div>
-              <span class="card-duration-pill">00:45</span>
-            </div>
-            <div class="card-title">Loonie Hour: Social Cutdown 02</div>
-            <div class="card-meta-line">
-              <span>HIGH RETENTION HOOKS // 9:16</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="playlist-card no-thumb" 
-             data-type="video" 
-             data-format="9:16"
-             data-src="{{ .Site.BaseURL }}Loonie_Hour_clip_3.mp4" 
-             data-title="Loonie Hour: Dynamic Discussion 03" 
-             data-client="PODCAST SOCIAL CLIPS"
-             data-category="shortform"
-             data-role="VERTICAL VIDEO EDITOR"
-             data-desc="Vertical debate segment edit with auto-reframe split-screens, kinetic subtitles, and sound accents."
-             data-pipeline="SPLIT-SCREEN 9:16"
-             data-tools="PREMIERE / AE"
-             data-time="00:42">
-          <div class="card-info" style="grid-column: 1 / -1;">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-              <div class="card-category-tag" style="color: var(--amber-core); font-weight: 600;">📱 9:16 VERTICAL SHORT FORM</div>
-              <span class="card-duration-pill">00:42</span>
-            </div>
-            <div class="card-title">Loonie Hour: Discussion 03</div>
-            <div class="card-meta-line">
-              <span>SPLIT SCREEN REFRAME // 9:16</span>
-              <span class="card-status-now">● PLAYING ON LEFT</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
+
+  <!-- ROWAN CAPABILITIES & CREATIVE PIPELINES -->
+  <section class="rowan-studios-section" style="max-width: 1400px; margin: 80px auto 0; width: 100%; padding: 0 24px;">
+    <div class="section-header-bar" style="border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 16px; margin-bottom: 24px;">
+      <div class="section-title-wrapper">
+        <span class="mono-label">[03]</span>
+        <h2 class="section-heading">Capabilities &amp; Creative Pipelines</h2>
+      </div>
+      <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" style="font-family: var(--font-mono); font-size: 11px; color: var(--amber-core); text-decoration: none; display: flex; align-items: center; gap: 4px;">
+        <span>FULL PRODUCTION HISTORY IN RESUME PDF</span> ↗
+      </a>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+      <div class="showcase-meta-card">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--amber-core); font-weight: 700;">01</div>
+        <div class="project-hero-title" style="font-size: 18px;">Video Game Launch Trailers</div>
+        <p class="project-narrative">Gameplay capture direction, multi-cam combat pacing, cinematic story hooks, and bespoke title typography.</p>
+      </div>
+
+      <div class="showcase-meta-card">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--amber-core); font-weight: 700;">02</div>
+        <div class="project-hero-title" style="font-size: 18px;">Unreal Engine 5.4 Cinematics</div>
+        <p class="project-narrative">Real-time Nanite geometry, volumetric atmospheric fog, Lumen global illumination, and camera flythroughs.</p>
+      </div>
+
+      <div class="showcase-meta-card">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--amber-core); font-weight: 700;">03</div>
+        <div class="project-hero-title" style="font-size: 18px;">Creator YouTube Post-Production</div>
+        <p class="project-narrative">High-retention video essays, Godot game dev tutorial series, documentary explainers, and animated infographics.</p>
+      </div>
+
+      <div class="showcase-meta-card">
+        <div style="font-family: var(--font-mono); font-size: 12px; color: var(--amber-core); font-weight: 700;">04</div>
+        <div class="project-hero-title" style="font-size: 18px;">3D Motion Graphics &amp; UI</div>
+        <p class="project-narrative">Photorealistic Octane raytracing, holographic FinTech UI, isometric product reveals, and luxury automotive turntables.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROWAN CONTACT CALL TO ACTION (INTERACTIVE LINE FILL) -->
+  <section class="rowan-contact-cta-section">
+    <div class="contact-button-wrapper">
+      <a href="mailto:donye3d@gmail.com" class="rowan-big-contact-btn" id="btn-cta-contact">
+        <span class="contact-btn-text">Let's Work Together</span>
+        <div class="contact-underline-wrapper">
+          <div class="contact-underline-fill"></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- ROWAN 12-COLUMN FOOTER CONSOLE -->
+  <footer class="rowan-footer">
+    <div class="top-footer-bar">
+      <div class="footer-brand-col">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="refraction-orb"></div>
+          <span style="font-family: var(--font-display); font-size: 14px; font-weight: 800; color: #fff;">DONYE WILSON</span>
+        </div>
+        <p class="footer-brand-desc">
+          Available for commercial game trailers, Unreal 5.4 cinematics, and ongoing YouTube creator post-production partnerships.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <div class="footer-col-heading">Navigation</div>
+        <div class="footer-links-list">
+          <a href="{{ .Site.BaseURL }}" class="footer-nav-link">Home</a>
+          <a href="#works-stage" class="footer-nav-link">Selected Works</a>
+          <a href="#youtube-experience" class="footer-nav-link">YouTube Experience</a>
+          <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" class="footer-nav-link">Resume PDF ↗</a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <div class="footer-col-heading">Direct Channels</div>
+        <div class="footer-links-list">
+          <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="footer-nav-link">YTJobs Verified Profile ↗</a>
+          <a href="mailto:donye3d@gmail.com" class="footer-nav-link">donye3d@gmail.com ↗</a>
+          <a href="tel:+16239860928" class="footer-nav-link">+1 (623) 986-0928 ↗</a>
+        </div>
+      </div>
+
+      <div class="footer-newsletter-col">
+        <div class="footer-col-heading">Direct Commission Uplink</div>
+        <button class="liquid-btn primary" id="btn-footer-open-brief" style="width: 100%; justify-content: center; padding: 12px; margin-top: 10px;">
+          <span>+</span> TRANSMIT PROJECT BRIEF
+        </button>
+      </div>
+    </div>
+
+    <div class="bottom-footer-bar">
+      <div class="footer-copyright">
+        © 2026 Donye Wilson. All Rights Reserved. Engineered with Liquid Glass &amp; Rowan Architecture.
+      </div>
+      <div class="footer-links-row">
+        <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="footer-sub-link">YTJobs</a>
+        <a href="mailto:donye3d@gmail.com" class="footer-sub-link">Email</a>
+        <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" class="footer-sub-link">Resume</a>
+      </div>
+    </div>
+  </footer>
+
 </main>

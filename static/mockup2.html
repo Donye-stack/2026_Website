@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Donye Wilson — Mockup 2: Frosted Monolith</title>
+  <meta name="description" content="Mockup 2: Centered WELCOME Header with Interactive Category Cards & Grid Showcase in Liquid Glass Light Refraction.">
+
+  <!-- Rowan Typography: Inter Tight + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <style>
+    /* ==========================================================================
+       MOCKUP 2: FROSTED MONOLITH (CATEGORY DECK & GRID REVEAL)
+       ========================================================================== */
+    .mockup-switcher-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 38px;
+      background: rgba(4, 5, 8, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .switcher-label {
+      color: var(--amber-core);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .switcher-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .switcher-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .switcher-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .switcher-link.active {
+      color: #fff;
+      background: rgba(255, 96, 26, 0.25);
+      border-color: rgba(255, 96, 26, 0.5);
+      box-shadow: 0 0 12px rgba(255, 96, 26, 0.3);
+    }
+
+    /* Architectural Centered Hero */
+    .monolith-hero-section {
+      width: 100%;
+      min-height: 85vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 140px 24px 70px;
+      margin-top: 38px;
+    }
+    .monolith-pedestal {
+      max-width: 1200px;
+      width: 100%;
+      padding: 72px 48px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(16, 20, 32, 0.82) 0%, rgba(8, 10, 15, 0.96) 100%);
+      backdrop-filter: blur(36px) saturate(240%);
+      -webkit-backdrop-filter: blur(36px) saturate(240%);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-top: 1px solid rgba(255, 255, 255, 0.36);
+      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9), 0 0 50px rgba(255, 96, 26, 0.25);
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+    .monolith-pedestal::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 28px;
+      padding: 1.5px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,140,50,0.6) 30%, rgba(192,132,252,0.5) 70%, rgba(0,242,254,0.5) 100%);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .monolith-welcome {
+      font-family: var(--font-display);
+      font-size: clamp(70px, 14vw, 160px);
+      font-weight: 900;
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 10%, #ffaa6e 40%, #d8b4fe 75%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 60px rgba(255, 96, 26, 0.45));
+    }
+
+    /* Category Interactive Deck */
+    .category-deck-container {
+      max-width: 1400px;
+      margin: 0 auto 60px;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .deck-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 16px;
+    }
+    .deck-nav-buttons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .deck-card-btn {
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-specular);
+      border-radius: var(--radius-glass);
+      padding: 24px;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .deck-card-btn:hover {
+      background: var(--bg-card-hover);
+      border-color: rgba(255, 96, 26, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 96, 26, 0.2);
+    }
+    .deck-card-btn.active {
+      background: var(--bg-card-active);
+      border-color: var(--amber-core);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), 0 0 30px rgba(255, 96, 26, 0.35);
+    }
+    .deck-card-btn.active .deck-num {
+      color: #fff;
+    }
+    .deck-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--amber-core);
+      font-weight: 700;
+    }
+    .deck-title {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-white);
+    }
+    .deck-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* Category Media Grid */
+    .category-media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+      gap: 28px;
+      margin-top: 16px;
+    }
+    @media (max-width: 600px) {
+      .category-media-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .monolith-video-card {
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-glass);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-specular);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+      box-shadow: var(--glass-shadow);
+    }
+    .monolith-video-card:hover {
+      border-color: rgba(255, 96, 26, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 24px rgba(255, 96, 26, 0.25);
+    }
+    .monolith-player-box {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      position: relative;
+    }
+    .monolith-player-box.vertical-box {
+      aspect-ratio: 9 / 16;
+      max-height: 480px;
+      width: auto;
+      margin: 0 auto;
+    }
+    .monolith-player-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .monolith-card-body {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mockup Switcher Bar -->
+  <div class="mockup-switcher-bar">
+    <div class="switcher-label">
+      <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
+      DESIGN PROTOTYPES // 3 UNIQUE LIQUID GLASS SETUPS
+    </div>
+    <div class="switcher-tabs">
+      <a href="./mockup1.html" class="switcher-link">Mockup 1 (Prismatic Horizon)</a>
+      <a href="./mockup2.html" class="switcher-link active">Mockup 2 (Frosted Monolith)</a>
+      <a href="./mockup3.html" class="switcher-link">Mockup 3 (Spectral Minimalist)</a>
+    </div>
+  </div>
+
+  <!-- Ambient Video Background (PRJCT ESCP_CON_1.mp4) -->
+  <div class="ambient-video-background">
+    <video class="bg-video-element" src="./PRJCT%20ESCP_CON_1.mp4" autoplay muted loop playsinline></video>
+    <div class="bg-video-overlay"></div>
+    <div class="liquid-caustics-mesh"></div>
+  </div>
+
+  <div class="caustic-ambient-1"></div>
+  <div class="caustic-ambient-2"></div>
+  <div class="caustic-ambient-3"></div>
+
+  <!-- Top Glass Navigation Dock -->
+  <div class="navigation-wrapper" style="top: 50px;">
+    <div class="rowan-nav-bar">
+      <div class="container-nav">
+        <a href="./index.html" class="logo-link">
+          <div class="refraction-orb"></div>
+          <div class="brand-text-block">
+            <div class="brand-name">DONYE WILSON</div>
+            <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="liquid-btn ytjobs-link-btn">
+            <span>▶</span> YTJOBS VERIFIED ↗
+          </a>
+          <a href="./Donye_Wilson_Resume.pdf" target="_blank" class="liquid-btn">
+            <span>RESUME PDF</span> ↗
+          </a>
+          <button class="liquid-btn primary" id="btn-open-brief">
+            <span>+</span> COMMISSION REEL
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARCHITECTURAL CENTERED HERO SECTION -->
+  <section class="monolith-hero-section">
+    <div class="monolith-pedestal">
+      <div class="hero-top-eyebrow">
+        <span class="refraction-orb" style="width: 10px; height: 10px;"></span>
+        <span class="eyebrow-text">FROSTED ACRYLIC ARCHITECTURE // UNREAL 5.4</span>
+        <span class="eyebrow-badge">MOCKUP 2: FROSTED MONOLITH</span>
+      </div>
+
+      <h1 class="monolith-welcome">WELCOME</h1>
+
+      <div class="hero-disciplines-row" style="justify-content: center; border-top: none; padding-top: 0;">
+        <div class="discipline-item"><span class="discipline-dot"></span> Game Trailers</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> 3D Worlds</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> YouTube Essays</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> Commercial Motion</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> 9:16 Social Edits</div>
+      </div>
+
+      <a href="#deck-section" class="hero-scroll-indicator" style="text-decoration: none;">
+        <span>↓ SCROLL DOWN FOR CATEGORY GALLERIES</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE CATEGORY DECK (Click categories to see media inside them) -->
+  <section class="category-deck-container" id="deck-section">
+    <div class="deck-header">
+      <div class="section-title-wrapper">
+        <span class="mono-label">[01]</span>
+        <h2 class="section-heading">Explore Portfolio Categories</h2>
+      </div>
+      <div class="section-subtext">SELECT A CATEGORY TO REVEAL MEDIA GALLERY</div>
+    </div>
+
+    <!-- Category Tile Selector Buttons -->
+    <div class="deck-nav-buttons">
+      <button class="deck-card-btn active" data-filter="all">
+        <span class="deck-num">00 // ALL DISCIPLINES</span>
+        <span class="deck-title">All Featured Work</span>
+        <span class="deck-meta">10 Curated Video Productions</span>
+      </button>
+
+      <button class="deck-card-btn" data-filter="trailers">
+        <span class="deck-num">01 // GAME TRAILERS</span>
+        <span class="deck-title">Game Trailers</span>
+        <span class="deck-meta">2 Studio Launch Trailers</span>
+      </button>
+
+      <button class="deck-card-btn" data-filter="motion">
+        <span class="deck-num">02 // 3D WORLDS</span>
+        <span class="deck-title">3D Worlds &amp; Unreal</span>
+        <span class="deck-meta">3 Procedural Environments</span>
+      </button>
+
+      <button class="deck-card-btn" data-filter="youtube">
+        <span class="deck-num">03 // YOUTUBE</span>
+        <span class="deck-title">Creator YouTube</span>
+        <span class="deck-meta">3 Documentary &amp; Narrative Cuts</span>
+      </button>
+
+      <button class="deck-card-btn" data-filter="commercial">
+        <span class="deck-num">04 // COMMERCIAL</span>
+        <span class="deck-title">Commercial Motion</span>
+        <span class="deck-meta">1 3D FinTech Product Launch</span>
+      </button>
+
+      <button class="deck-card-btn" data-filter="shortform">
+        <span class="deck-num">05 // SHORT FORM</span>
+        <span class="deck-title">9:16 Vertical Video</span>
+        <span class="deck-meta">1 High-Retention Stream Cut</span>
+      </button>
+    </div>
+
+    <!-- The Revealed Media Gallery Grid (10 Videos) -->
+    <div class="category-media-grid" id="monolith-grid">
+      
+      <!-- Video 1: Blargis -->
+      <div class="monolith-video-card" data-category="trailers">
+        <div class="monolith-player-box">
+          <video src="./All_Roads_Lead_To_Polygon_Final%203.2.mp4" controls autoplay muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag">GAME TRAILER • 16:9 4K</div>
+          <div class="project-hero-title">Blargis: Black Out Jack Trailer</div>
+          <p class="project-narrative">Official launch trailer featuring high-intensity combat pacing, kinetic transitions, and bespoke title animations.</p>
+        </div>
+      </div>
+
+      <!-- Video 2: Alchemortis -->
+      <div class="monolith-video-card" data-category="trailers">
+        <div class="monolith-player-box">
+          <video src="./Alchemortis%20trailer%201.1.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag">GAME TRAILER • 16:9 4K</div>
+          <div class="project-hero-title">Alchemortis: Official Trailer</div>
+          <p class="project-narrative">Official trailer for Firebelley Games featuring dynamic combat editing, boss mechanics, and custom UI motion.</p>
+        </div>
+      </div>
+
+      <!-- Video 3: Project Escape 01 -->
+      <div class="monolith-video-card" data-category="motion">
+        <div class="monolith-player-box">
+          <video src="./PRJCT%20ESCP_CON_1.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag">3D WORLDS • UNREAL ENGINE 5.4</div>
+          <div class="project-hero-title">Project Escape: Sequence 01</div>
+          <p class="project-narrative">Procedural environment dynamics and high-speed cinematic flythrough rendered in Unreal Engine 5.4 with Nanite.</p>
+        </div>
+      </div>
+
+      <!-- Video 4: ZK Mountain -->
+      <div class="monolith-video-card" data-category="motion">
+        <div class="monolith-player-box">
+          <video src="./ZK%20MOUNTAIN%201.0.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag">3D WORLDS • PROCEDURAL TERRAIN</div>
+          <div class="project-hero-title">ZK Mountain: Procedural Terrain</div>
+          <p class="project-narrative">Photorealistic mountain range generation using procedural heightfields, cloud simulation, and Octane illumination.</p>
+        </div>
+      </div>
+
+      <!-- Video 5: ZK Water -->
+      <div class="monolith-video-card" data-category="motion">
+        <div class="monolith-player-box">
+          <video src="./ZK%20WATER%20DEMO%201%2C2.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag">3D WORLDS • FLUID DYNAMICS</div>
+          <div class="project-hero-title">ZK Water: Fluid Dynamics</div>
+          <p class="project-narrative">Realistic wave simulation, surface foam dynamics, underwater refraction caustics, and physical light absorption shaders.</p>
+        </div>
+      </div>
+
+      <!-- Video 6: BC Hydro Explainer -->
+      <div class="monolith-video-card" data-category="youtube">
+        <div class="monolith-player-box">
+          <video src="./BC%20Hydro's%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • DOCUMENTARY</div>
+          <div class="project-hero-title">BC Hydro: Policy Reversal Explainer</div>
+          <p class="project-narrative">In-depth investigative documentary explainer examining energy infrastructure decisions, combining motion graphics and data breakdowns.</p>
+        </div>
+      </div>
+
+      <!-- Video 7: Bitcoin Broken Narrative -->
+      <div class="monolith-video-card" data-category="youtube">
+        <div class="monolith-player-box">
+          <video src="./Bitcoin's%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • FINANCIAL ESSAY</div>
+          <div class="project-hero-title">Bitcoin's Broken Narrative Essay</div>
+          <p class="project-narrative">Analytical financial essay video breaking down macroeconomic shifts and market metrics with animated chart visualizations.</p>
+        </div>
+      </div>
+
+      <!-- Video 8: Joshua Graham -->
+      <div class="monolith-video-card" data-category="youtube">
+        <div class="monolith-player-box">
+          <video src="./Joshua%20Graham%20CINI.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • NARRATIVE</div>
+          <div class="project-hero-title">Joshua Graham: Cinematic Narrative</div>
+          <p class="project-narrative">Cinematic character narrative edit combining dramatic voiceover pacing, color grading, and immersive audio storytelling.</p>
+        </div>
+      </div>
+
+      <!-- Video 9: TrustSwap Launchpad -->
+      <div class="monolith-video-card" data-category="commercial">
+        <div class="monolith-player-box">
+          <video src="./TrustSwap%20Launchpad%20Animation%20Launch%20Video%20Final%200.4.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag">COMMERCIAL • 3D PRODUCT MOTION</div>
+          <div class="project-hero-title">TrustSwap Launchpad Commercial</div>
+          <p class="project-narrative">Commercial product launch video showcasing high-gloss 3D UI cards, token staking animations, and fluid camera transitions.</p>
+        </div>
+      </div>
+
+      <!-- Video 10: LDA Aggregator Highlight -->
+      <div class="monolith-video-card" data-category="shortform">
+        <div class="monolith-player-box vertical-box">
+          <video src="./LDA%20Agg%20CLIPS%20FINAL%20.mp4" controls muted loop playsinline></video>
+        </div>
+        <div class="monolith-card-body">
+          <div class="card-category-tag" style="color: var(--amber-core);">📱 9:16 VERTICAL SHORT FORM</div>
+          <div class="project-hero-title">LDA Aggregator: Highlight Sequence</div>
+          <p class="project-narrative">Fast-cut 9:16 vertical highlight reel combining high-impact clips, speed ramps, visual flares, and rhythmic montage pacing.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Rowan Contact CTA -->
+  <section class="rowan-contact-cta-section" style="margin-top: 64px;">
+    <div class="rowan-container">
+      <div class="contact-button-wrapper">
+        <a href="mailto:donye3d@gmail.com" class="rowan-big-contact-btn">
+          <span class="contact-btn-text">Let's Work Together</span>
+          <div class="contact-underline-wrapper">
+            <div class="contact-underline-fill"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rowan Footer -->
+  <footer class="rowan-footer">
+    <div class="rowan-container">
+      <div class="top-footer-bar">
+        <div class="footer-brand-col">
+          <div class="brand-group" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff;">
+            <div class="refraction-orb"></div>
+            <div>
+              <div class="brand-name">DONYE WILSON</div>
+              <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-col-heading">Prototypes</div>
+          <div class="footer-links-list">
+            <a href="./mockup1.html" class="footer-nav-link">Mockup 1 (Prismatic Horizon)</a>
+            <a href="./mockup2.html" class="footer-nav-link">Mockup 2 (Frosted Monolith)</a>
+            <a href="./mockup3.html" class="footer-nav-link">Mockup 3 (Spectral Minimalist)</a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-col-heading">Direct Channels</div>
+          <div class="footer-links-list">
+            <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="footer-nav-link">YTJobs Verified Profile ↗</a>
+            <a href="mailto:donye3d@gmail.com" class="footer-nav-link">donye3d@gmail.com ↗</a>
+          </div>
+        </div>
+        <div class="footer-newsletter-col">
+          <div class="footer-col-heading">Direct Uplink</div>
+          <a href="mailto:donye3d@gmail.com" class="liquid-btn primary" style="justify-content: center; width: 100%; padding: 12px; margin-top: 10px;">
+            START A CONVERSATION
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const deckBtns = document.querySelectorAll('.deck-card-btn');
+      const videoCards = document.querySelectorAll('.monolith-video-card');
+
+      deckBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          deckBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+
+          videoCards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+
+          document.getElementById('monolith-grid').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

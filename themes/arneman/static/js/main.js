@@ -1,190 +1,115 @@
 /**
  * Donye Wilson — Video Editor & 3D Motion Graphics Portfolio
- * Interactive Showcase & Dynamic 9:16 / 16:9 Playback Engine
+ * Rowan-Inspired Liquid Glass Experience, Category Filtering & Dynamic Scroll-Blur Engine
  */
 document.addEventListener('DOMContentLoaded', () => {
-  const playlistCards = document.querySelectorAll('.playlist-card');
-  const showcaseContainer = document.getElementById('showcase-media-container');
-  const formatBadge = document.getElementById('format-badge');
-  const metaTitle = document.getElementById('meta-title');
-  const metaRole = document.getElementById('meta-role');
-  const metaClient = document.getElementById('meta-client');
-  const metaDesc = document.getElementById('meta-description');
-  const metaPipeline = document.getElementById('meta-pipeline');
-  const metaTools = document.getElementById('meta-tools');
-  const btnPlayPause = document.getElementById('btn-play-pause');
-  const btnMuteToggle = document.getElementById('btn-mute-toggle');
-  const timelineFill = document.getElementById('timeline-fill');
-  const timelineThumb = document.getElementById('timeline-thumb');
-  const timelineBar = document.getElementById('timeline-bar');
-  const playlistCountBadge = document.getElementById('playlist-count-badge');
-  let currentVideo = document.getElementById('main-showcase-video');
+  const rows = document.querySelectorAll('.rowan-work-row');
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const activeFilterSubtext = document.getElementById('active-filter-subtext');
+  const bgVideo = document.querySelector('.bg-video-element');
+  const bgOverlay = document.querySelector('.bg-video-overlay');
 
-  // Clicking ANY card on the right immediately switches the left showcase video/image
-  playlistCards.forEach(card => {
-    card.addEventListener('click', () => {
-      // Highlight active card
-      playlistCards.forEach(c => c.classList.remove('active'));
-      card.classList.add('active');
+  // ==========================================================================
+  // DYNAMIC SCROLL-BLUR & PROGRESSIVE CINEMATIC DEPTH OF FIELD
+  // Smoothly increases blur on scroll to maximize typography legibility
+  // ==========================================================================
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const blurThreshold = 550; // Pixels until full frosted cinema blur
+        const progress = Math.min(scrollY / blurThreshold, 1);
 
-      // Extract metadata from card
-      const type = card.getAttribute('data-type');
-      const format = card.getAttribute('data-format') || '16:9';
-      const src = card.getAttribute('data-src');
-      const title = card.getAttribute('data-title');
-      const client = card.getAttribute('data-client');
-      const role = card.getAttribute('data-role');
-      const desc = card.getAttribute('data-desc');
-      const pipeline = card.getAttribute('data-pipeline');
-      const tools = card.getAttribute('data-tools');
-      const time = card.getAttribute('data-time') || '01:00';
-
-      // Update aspect ratio formatting for 9:16 vs 16:9
-      if (format === '9:16') {
-        showcaseContainer.classList.remove('mode-16-9');
-        showcaseContainer.classList.add('mode-9-16');
-        if (formatBadge) formatBadge.textContent = 'FORMAT: 9:16 VERTICAL';
-      } else {
-        showcaseContainer.classList.remove('mode-9-16');
-        showcaseContainer.classList.add('mode-16-9');
-        if (formatBadge) formatBadge.textContent = 'FORMAT: 16:9 CINEMA';
-      }
-
-      // Update left showcase media
-      if (type === 'video') {
-        showcaseContainer.innerHTML = `
-          <video id="main-showcase-video" class="showcase-video" src="${src}" autoplay muted loop playsinline></video>
-          <div class="showcase-video-overlay">
-            <span class="active-badge-pill" id="active-badge-text">
-              <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
-              SHOWCASE: ${title}
-            </span>
-            <span class="timecode-pill" id="active-timecode">00:00 / ${time}</span>
-          </div>
-        `;
-        currentVideo = document.getElementById('main-showcase-video');
-        attachVideoEvents(currentVideo);
-        if (btnPlayPause) {
-          btnPlayPause.style.display = 'flex';
-          btnPlayPause.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>';
+        if (bgVideo) {
+          const blurAmount = (progress * 24).toFixed(1); // 0px -> 24px blur
+          const brightness = (138 - (progress * 30)).toFixed(0); // 138% -> 108%
+          bgVideo.style.filter = `contrast(112%) brightness(${brightness}%) saturate(155%) blur(${blurAmount}px)`;
         }
-        if (btnMuteToggle) {
-          btnMuteToggle.style.display = 'inline-flex';
-          btnMuteToggle.textContent = 'UNMUTE AUDIO';
+
+        if (bgOverlay) {
+          // Gently increase dark optical shield as you enter content
+          bgOverlay.style.backgroundColor = `rgba(11, 14, 23, ${(progress * 0.45).toFixed(2)})`;
         }
-      } else {
-        showcaseContainer.innerHTML = `
-          <img class="showcase-img" src="${src}" alt="${title}" />
-          <div class="showcase-video-overlay">
-            <span class="active-badge-pill" id="active-badge-text">
-              <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
-              SHOWCASE: ${title}
-            </span>
-            <span class="timecode-pill" id="active-timecode">LOOP / ${time}</span>
-          </div>
-        `;
-        currentVideo = null;
-        if (btnPlayPause) btnPlayPause.style.display = 'none';
-        if (btnMuteToggle) btnMuteToggle.style.display = 'none';
-        if (timelineFill) timelineFill.style.width = '100%';
-        if (timelineThumb) timelineThumb.style.left = '100%';
-      }
 
-      // Update metadata description sheet
-      if (metaTitle) metaTitle.textContent = title;
-      if (metaRole) metaRole.textContent = `ROLE: ${role}`;
-      if (metaClient) metaClient.textContent = client;
-      if (metaDesc) metaDesc.textContent = desc;
-      if (metaPipeline) metaPipeline.textContent = pipeline;
-      if (metaTools) metaTools.textContent = tools;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 
-      // Smooth scroll showcase into view on mobile
-      if (window.innerWidth < 1100) {
-        showcaseContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  // Row Expand / Collapse Toggle on Click
+  rows.forEach(row => {
+    const summaryBar = row.querySelector('.row-summary-bar');
+    if (!summaryBar) return;
+
+    summaryBar.addEventListener('click', () => {
+      const isExpanded = row.classList.contains('expanded');
+      
+      // Close other rows for clean single-focus playback
+      rows.forEach(r => {
+        r.classList.remove('expanded');
+        const v = r.querySelector('video');
+        if (v && v !== row.querySelector('video')) {
+          v.pause();
+        }
+      });
+
+      if (!isExpanded) {
+        row.classList.add('expanded');
+        const video = row.querySelector('video');
+        if (video) {
+          video.play().catch(() => {});
+        }
       }
     });
   });
 
-  // Play/Pause and Audio Controls
-  function attachVideoEvents(videoEl) {
-    if (!videoEl) return;
-    videoEl.addEventListener('timeupdate', () => {
-      if (videoEl.duration) {
-        const pct = (videoEl.currentTime / videoEl.duration) * 100;
-        if (timelineFill) timelineFill.style.width = pct + '%';
-        if (timelineThumb) timelineThumb.style.left = pct + '%';
-        
-        const curM = Math.floor(videoEl.currentTime / 60);
-        const curS = Math.floor(videoEl.currentTime % 60);
-        const durM = Math.floor(videoEl.duration / 60);
-        const durS = Math.floor(videoEl.duration % 60);
-        const timecodeEl = document.getElementById('active-timecode');
-        if (timecodeEl) {
-          timecodeEl.textContent = `${String(curM).padStart(2,'0')}:${String(curS).padStart(2,'0')} / ${String(durM).padStart(2,'0')}:${String(durS).padStart(2,'0')}`;
-        }
-      }
-    });
-  }
-
-  if (currentVideo) attachVideoEvents(currentVideo);
-
-  if (btnPlayPause) {
-    btnPlayPause.addEventListener('click', () => {
-      if (!currentVideo) return;
-      if (currentVideo.paused) {
-        currentVideo.play();
-        btnPlayPause.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>';
-      } else {
-        currentVideo.pause();
-        btnPlayPause.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
-      }
-    });
-  }
-
-  if (btnMuteToggle) {
-    btnMuteToggle.addEventListener('click', () => {
-      if (!currentVideo) return;
-      currentVideo.muted = !currentVideo.muted;
-      btnMuteToggle.textContent = currentVideo.muted ? 'UNMUTE AUDIO' : 'MUTE AUDIO';
-    });
-  }
-
-  // Interactive timeline scrubbing
-  if (timelineBar) {
-    timelineBar.addEventListener('click', (e) => {
-      if (!currentVideo || !currentVideo.duration) return;
-      const rect = timelineBar.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const pct = Math.max(0, Math.min(1, clickX / rect.width));
-      currentVideo.currentTime = pct * currentVideo.duration;
-    });
-  }
-
-  // Filter Buttons
-  document.querySelectorAll('.filter-btn').forEach(btn => {
+  // Top Category Tabs Filtering Logic
+  filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       const filter = btn.getAttribute('data-filter');
 
       let visibleCount = 0;
-      playlistCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
+      let firstExpanded = false;
+
+      rows.forEach(row => {
+        const cat = row.getAttribute('data-category');
         if (filter === 'all' || cat === filter) {
-          card.style.display = card.classList.contains('no-thumb') ? 'block' : 'grid';
+          row.style.display = 'block';
           visibleCount++;
+          if (!firstExpanded) {
+            row.classList.add('expanded');
+            firstExpanded = true;
+            const v = row.querySelector('video');
+            if (v) v.play().catch(() => {});
+          } else {
+            row.classList.remove('expanded');
+          }
         } else {
-          card.style.display = 'none';
+          row.style.display = 'none';
+          row.classList.remove('expanded');
+          const v = row.querySelector('video');
+          if (v) v.pause();
         }
       });
 
-      if (playlistCountBadge) {
-        playlistCountBadge.textContent = `${visibleCount} ENTRIES`;
+      if (activeFilterSubtext) {
+        const title = btn.textContent.trim();
+        activeFilterSubtext.textContent = `FILTERED: ${title} (${visibleCount} VISIBLE)`;
+      }
+
+      // Smooth scroll to works container
+      const worksContainer = document.getElementById('works-stage');
+      if (worksContainer) {
+        worksContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
 
-  // Commission Brief Modal Handlers
+  // Commission Brief Modal Dialog
   const briefModal = document.getElementById('brief-modal');
   const btnOpenBrief = document.getElementById('btn-open-brief');
   const btnCloseModal = document.getElementById('btn-close-modal');
@@ -204,21 +129,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (e.target === briefModal) briefModal.classList.remove('open');
     });
   }
+
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && briefModal) briefModal.classList.remove('open');
-    if (e.code === 'Space' && e.target === document.body && btnPlayPause && currentVideo) {
-      e.preventDefault();
-      btnPlayPause.click();
-    }
-    if (e.key.toLowerCase() === 'f') {
-      const frame = document.querySelector('.showcase-liquid-frame');
-      if (frame) {
-        if (!document.fullscreenElement) {
-          frame.requestFullscreen?.();
-        } else {
-          document.exitFullscreen?.();
-        }
-      }
+    if (e.key === 'Escape' && briefModal) {
+      briefModal.classList.remove('open');
     }
   });
 });
