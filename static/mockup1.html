@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Donye Wilson — Mockup 1: Prismatic Horizon</title>
+  <meta name="description" content="Mockup 1: Centered WELCOME Hero with Rowan-style full-width horizontal expandable work rows and liquid glass refraction theme.">
+
+  <!-- Rowan Typography: Inter Tight + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <style>
+    /* ==========================================================================
+       MOCKUP 1: PRISMATIC HORIZON (ROWAN FULL-WIDTH EXPANDABLE ROWS)
+       ========================================================================== */
+    .mockup-switcher-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 38px;
+      background: rgba(4, 5, 8, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .switcher-label {
+      color: var(--amber-core);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .switcher-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .switcher-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .switcher-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .switcher-link.active {
+      color: #fff;
+      background: rgba(255, 96, 26, 0.25);
+      border-color: rgba(255, 96, 26, 0.5);
+      box-shadow: 0 0 12px rgba(255, 96, 26, 0.3);
+    }
+
+    /* Centered Rowan Hero */
+    .centered-hero-section {
+      width: 100%;
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 120px 24px 60px;
+      margin-top: 38px;
+    }
+    .centered-hero-glass-box {
+      max-width: 1100px;
+      width: 100%;
+      padding: 64px 48px;
+      border-radius: var(--radius-glass);
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-specular);
+      box-shadow: var(--glass-shadow);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+    .centered-hero-glass-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-glass);
+      padding: 1.5px;
+      background: var(--refract-border);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+    .hero-centered-welcome {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 12vw, 150px);
+      font-weight: 900;
+      line-height: 0.88;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #ffffff 15%, #ff9e5e 45%, #e0aaff 75%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 50px rgba(255, 96, 26, 0.4));
+    }
+    .hero-scroll-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--amber-core);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 10px;
+      animation: bounce-subtle 2s infinite ease-in-out;
+    }
+    @keyframes bounce-subtle {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(6px); }
+    }
+
+    /* Sticky Category Filter Tabs Bar */
+    .sticky-category-bar {
+      position: sticky;
+      top: 56px;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 0;
+      background: rgba(7, 8, 11, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 40px;
+    }
+    .category-pills-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* Rowan Full-Width Expandable Work Rows */
+    .rowan-works-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .rowan-work-row {
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-glass);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-specular);
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+    }
+    .rowan-work-row:hover {
+      border-color: rgba(255, 96, 26, 0.5);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 96, 26, 0.2);
+    }
+    .row-summary-bar {
+      padding: 24px 32px;
+      display: grid;
+      grid-template-columns: 80px 2fr 1.5fr 1fr 40px;
+      align-items: center;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .row-summary-bar {
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+      }
+      .col-hide-mobile {
+        display: none;
+      }
+    }
+    .row-index {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--amber-core);
+      font-weight: 700;
+    }
+    .row-title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .row-project-title {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.01em;
+    }
+    .row-category-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .row-role-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-main);
+    }
+    .row-format-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      color: var(--amber-core);
+      width: fit-content;
+    }
+    .row-toggle-icon {
+      font-size: 18px;
+      color: var(--text-muted);
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .rowan-work-row.expanded .row-toggle-icon {
+      transform: rotate(45deg);
+      color: var(--amber-core);
+    }
+
+    /* Expandable Video Stage */
+    .row-expandable-content {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      background: rgba(0, 0, 0, 0.6);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .rowan-work-row.expanded .row-expandable-content {
+      max-height: 850px;
+      opacity: 1;
+      padding: 32px;
+    }
+    .expandable-video-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+    @media (max-width: 990px) {
+      .expandable-video-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .row-video-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .row-video-player.mode-9-16 {
+      aspect-ratio: 9 / 16;
+      max-height: 520px;
+      width: auto;
+      margin: 0 auto;
+    }
+    .row-video-player video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mockup Switcher Bar -->
+  <div class="mockup-switcher-bar">
+    <div class="switcher-label">
+      <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
+      DESIGN PROTOTYPES // 3 UNIQUE LIQUID GLASS SETUPS
+    </div>
+    <div class="switcher-tabs">
+      <a href="./mockup1.html" class="switcher-link active">Mockup 1 (Prismatic Horizon)</a>
+      <a href="./mockup2.html" class="switcher-link">Mockup 2 (Frosted Monolith)</a>
+      <a href="./mockup3.html" class="switcher-link">Mockup 3 (Spectral Minimalist)</a>
+    </div>
+  </div>
+
+  <!-- Ambient Video Background (PRJCT ESCP_CON_1.mp4) -->
+  <div class="ambient-video-background">
+    <video class="bg-video-element" src="./PRJCT%20ESCP_CON_1.mp4" autoplay muted loop playsinline></video>
+    <div class="bg-video-overlay"></div>
+    <div class="liquid-caustics-mesh"></div>
+  </div>
+
+  <!-- Ambient Chromatic Refractions -->
+  <div class="caustic-ambient-1"></div>
+  <div class="caustic-ambient-2"></div>
+  <div class="caustic-ambient-3"></div>
+
+  <!-- Top Glass Navigation Dock -->
+  <div class="navigation-wrapper" style="top: 50px;">
+    <div class="rowan-nav-bar">
+      <div class="container-nav">
+        <a href="./index.html" class="logo-link">
+          <div class="refraction-orb"></div>
+          <div class="brand-text-block">
+            <div class="brand-name">DONYE WILSON</div>
+            <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+          </div>
+        </a>
+
+        <div class="header-actions">
+          <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="liquid-btn ytjobs-link-btn">
+            <span>▶</span> YTJOBS VERIFIED ↗
+          </a>
+          <a href="./Donye_Wilson_Resume.pdf" target="_blank" class="liquid-btn">
+            <span>RESUME PDF</span> ↗
+          </a>
+          <button class="liquid-btn primary" id="btn-open-brief">
+            <span>+</span> COMMISSION REEL
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CENTERED WELCOME HERO (Rowan-Inspired Minimalism with Liquid Glass Refraction) -->
+  <section class="centered-hero-section">
+    <div class="centered-hero-glass-box">
+      <div class="hero-top-eyebrow">
+        <span class="refraction-orb" style="width: 10px; height: 10px;"></span>
+        <span class="eyebrow-text">CREATIVE POST-PRODUCTION &amp; UNREAL ENGINE 5.4</span>
+        <span class="eyebrow-badge">MOCKUP 1: PRISMATIC HORIZON</span>
+      </div>
+
+      <h1 class="hero-centered-welcome">WELCOME</h1>
+
+      <div class="hero-disciplines-row" style="justify-content: center; border-top: none; padding-top: 0;">
+        <div class="discipline-item"><span class="discipline-dot"></span> Game Trailers</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> 3D Worlds</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> YouTube Essays</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> Commercial Motion</div>
+        <div class="discipline-item"><span class="discipline-dot"></span> 9:16 Social Edits</div>
+      </div>
+
+      <a href="#works-stage" class="hero-scroll-indicator" style="text-decoration: none;">
+        <span>↓ SCROLL DOWN TO EXPLORE MEDIA</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- STICKY CATEGORY FILTER BAR (Click to see media inside categories) -->
+  <div class="sticky-category-bar" id="works-stage">
+    <div class="category-pills-row">
+      <button class="nav-link-item filter-btn active" data-filter="all">ALL WORK (10)</button>
+      <button class="nav-link-item filter-btn" data-filter="trailers">GAME TRAILERS (2)</button>
+      <button class="nav-link-item filter-btn" data-filter="motion">3D WORLDS (3)</button>
+      <button class="nav-link-item filter-btn" data-filter="youtube">YOUTUBE (3)</button>
+      <button class="nav-link-item filter-btn" data-filter="commercial">COMMERCIAL (1)</button>
+      <button class="nav-link-item filter-btn" data-filter="shortform">SHORT FORM (1)</button>
+    </div>
+  </div>
+
+  <!-- ROWAN FULL-WIDTH SCROLL-DOWN MEDIA ROWS -->
+  <section class="rowan-works-container">
+    
+    <!-- 1. Blargis: Black Out Jack Trailer -->
+    <div class="rowan-work-row expanded" data-category="trailers">
+      <div class="row-summary-bar">
+        <span class="row-index">[01]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Blargis: Black Out Jack Trailer</div>
+          <div class="row-category-tag">GAME TRAILER • 16:9 4K</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">LEAD TRAILER DIRECTOR &amp; POST</div>
+        <div class="row-format-badge col-hide-mobile">4K ULTRA HD</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./All_Roads_Lead_To_Polygon_Final%203.2.mp4" controls autoplay muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Official Launch Trailer</div>
+            <p class="project-narrative">High-octane official launch trailer for Blargis: Black Out Jack featuring explosive gameplay capture, multi-cam pacing, and custom typography animations.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">PIPELINE</div><div class="val">GAMEPLAY CAPTURE</div></div>
+              <div class="spec-box"><div class="label">SOFTWARE</div><div class="val">PREMIERE / AE</div></div>
+              <div class="spec-box"><div class="label">FPS</div><div class="val">60 FPS REALTIME</div></div>
+              <div class="spec-box"><div class="label">AUDIO</div><div class="val">5.1 CINEMATIC MIX</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. Alchemortis: Official Trailer -->
+    <div class="rowan-work-row" data-category="trailers">
+      <div class="row-summary-bar">
+        <span class="row-index">[02]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Alchemortis: Official Trailer</div>
+          <div class="row-category-tag">GAME TRAILER • 16:9 4K</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">TRAILER EDITOR &amp; MOTION DESIGN</div>
+        <div class="row-format-badge col-hide-mobile">FIREBELLEY GAMES</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./Alchemortis%20trailer%201.1.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Official Studio Trailer</div>
+            <p class="project-narrative">Official launch trailer for Firebelley Games' Alchemortis showcasing rapid combat editing, boss encounter choreography, and stylized UI motion graphics.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">CLIENT</div><div class="val">FIREBELLEY GAMES</div></div>
+              <div class="spec-box"><div class="label">PIPELINE</div><div class="val">PREMIERE / AE</div></div>
+              <div class="spec-box"><div class="label">RESOLUTION</div><div class="val">4K ULTRA HD</div></div>
+              <div class="spec-box"><div class="label">STATUS</div><div class="val">SHIPPED ON STEAM</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Project Escape: Sequence 01 -->
+    <div class="rowan-work-row" data-category="motion">
+      <div class="row-summary-bar">
+        <span class="row-index">[03]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Project Escape: Sequence 01</div>
+          <div class="row-category-tag">3D WORLDS • UNREAL ENGINE 5.4</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">3D ENVIRONMENT &amp; CINEMATICS LEAD</div>
+        <div class="row-format-badge col-hide-mobile">NANITE / LUMEN</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./PRJCT%20ESCP_CON_1.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">High-Speed Unreal Cinematics</div>
+            <p class="project-narrative">Procedural environment dynamics and high-speed cinematic flythrough rendered in Unreal Engine 5.4 with Nanite geometry and volumetric atmospheric lighting.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">ENGINE</div><div class="val">UNREAL 5.4</div></div>
+              <div class="spec-box"><div class="label">LIGHTING</div><div class="val">LUMEN GLOBAL</div></div>
+              <div class="spec-box"><div class="label">GEOMETRY</div><div class="val">NANITE 3D</div></div>
+              <div class="spec-box"><div class="label">POST</div><div class="val">AFTER EFFECTS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. ZK Mountain: Procedural Terrain -->
+    <div class="rowan-work-row" data-category="motion">
+      <div class="row-summary-bar">
+        <span class="row-index">[04]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">ZK Mountain: Procedural Terrain</div>
+          <div class="row-category-tag">3D WORLDS • PROCEDURAL TERRAIN</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">3D TERRAIN &amp; VOLUMETRICS</div>
+        <div class="row-format-badge col-hide-mobile">OCTANE RENDER</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./ZK%20MOUNTAIN%201.0.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Photoreal Alpine Worldbuilding</div>
+            <p class="project-narrative">Procedural heightfield generation, photogrammetry rock shading, realistic cloud simulation, and Octane sky illumination.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">PIPELINE</div><div class="val">WORLD MACHINE / C4D</div></div>
+              <div class="spec-box"><div class="label">RENDERER</div><div class="val">OCTANE STANDALONE</div></div>
+              <div class="spec-box"><div class="label">GRADE</div><div class="val">DAVINCI RESOLVE</div></div>
+              <div class="spec-box"><div class="label">TEXTURES</div><div class="val">8K PBR SHADERS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. ZK Water: Fluid Dynamics -->
+    <div class="rowan-work-row" data-category="motion">
+      <div class="row-summary-bar">
+        <span class="row-index">[05]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">ZK Water: Fluid Dynamics</div>
+          <div class="row-category-tag">3D WORLDS • FLUID SIMULATION</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">FLUID DYNAMICS &amp; CAUSTICS</div>
+        <div class="row-format-badge col-hide-mobile">HOUDINI FX</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./ZK%20WATER%20DEMO%201%2C2.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Caustic Light Refraction Physics</div>
+            <p class="project-narrative">Realistic wave simulation, surface foam dynamics, underwater refraction caustics, and physical light absorption shaders.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">PHYSICS</div><div class="val">FLUID DYNAMICS</div></div>
+              <div class="spec-box"><div class="label">SIMULATION</div><div class="val">HOUDINI FX</div></div>
+              <div class="spec-box"><div class="label">SHADERS</div><div class="val">OCTANE CAUSTICS</div></div>
+              <div class="spec-box"><div class="label">OPTICS</div><div class="val">SPECTRAL DISPERSION</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. BC Hydro Explainer -->
+    <div class="rowan-work-row" data-category="youtube">
+      <div class="row-summary-bar">
+        <span class="row-index">[06]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">BC Hydro: Policy Reversal Explainer</div>
+          <div class="row-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • DOCUMENTARY</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">LEAD VIDEO EDITOR &amp; NARRATIVE LEAD</div>
+        <div class="row-format-badge col-hide-mobile">DOCUMENTARY ESSAY</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./BC%20Hydro's%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Investigative Documentary Explainer</div>
+            <p class="project-narrative">In-depth investigative documentary explainer examining energy infrastructure decisions, combining motion graphics, clean data breakdowns, and compelling pacing.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">GENRE</div><div class="val">DOCUMENTARY ESSAY</div></div>
+              <div class="spec-box"><div class="label">TOOLS</div><div class="val">PREMIERE / AE</div></div>
+              <div class="spec-box"><div class="label">GRAPHICS</div><div class="val">KINETIC INFOGRAPHICS</div></div>
+              <div class="spec-box"><div class="label">RETENTION</div><div class="val">HIGH ENGAGEMENT</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. Bitcoin's Broken Narrative -->
+    <div class="rowan-work-row" data-category="youtube">
+      <div class="row-summary-bar">
+        <span class="row-index">[07]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Bitcoin's Broken Narrative Essay</div>
+          <div class="row-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • FINANCIAL ESSAY</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">DOCUMENTARY EDITOR &amp; MOTION DESIGNER</div>
+        <div class="row-format-badge col-hide-mobile">FINANCIAL ESSAY</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./Bitcoin's%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Macroeconomic Visual Essay</div>
+            <p class="project-narrative">Analytical financial essay video breaking down macroeconomic shifts and market metrics with animated chart visualizations and engaging visual pacing.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">STYLE</div><div class="val">VISUAL ESSAY</div></div>
+              <div class="spec-box"><div class="label">CHARTS</div><div class="val">ANIMATED DATA</div></div>
+              <div class="spec-box"><div class="label">SOFTWARE</div><div class="val">PREMIERE / RESOLVE</div></div>
+              <div class="spec-box"><div class="label">DELIVERABLE</div><div class="val">4K MASTER</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. Joshua Graham Narrative -->
+    <div class="rowan-work-row" data-category="youtube">
+      <div class="row-summary-bar">
+        <span class="row-index">[08]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">Joshua Graham: Cinematic Narrative</div>
+          <div class="row-category-tag" style="color: #ff4444;">▶ YOUTUBE CONTENT • NARRATIVE</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">CINEMATIC VIDEO EDITOR</div>
+        <div class="row-format-badge col-hide-mobile">60 FPS ESSAY</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./Joshua%20Graham%20CINI.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Atmospheric Storytelling Cut</div>
+            <p class="project-narrative">Cinematic character narrative edit combining dramatic voiceover pacing, color grading, atmospheric scene transitions, and immersive audio storytelling.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">PACING</div><div class="val">CINEMATIC ESSAY</div></div>
+              <div class="spec-box"><div class="label">COLOR</div><div class="val">DAVINCI RESOLVE</div></div>
+              <div class="spec-box"><div class="label">FRAME RATE</div><div class="val">60 FPS</div></div>
+              <div class="spec-box"><div class="label">SOUND</div><div class="val">ATMOSPHERIC FX</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. TrustSwap Launchpad -->
+    <div class="rowan-work-row" data-category="commercial">
+      <div class="row-summary-bar">
+        <span class="row-index">[09]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">TrustSwap Launchpad Commercial</div>
+          <div class="row-category-tag">COMMERCIAL • 3D FINTECH PRODUCT</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">LEAD 3D COMMERCIAL ANIMATOR</div>
+        <div class="row-format-badge col-hide-mobile">3D PRODUCT MOTION</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player">
+            <video src="./TrustSwap%20Launchpad%20Animation%20Launch%20Video%20Final%200.4.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Commercial Launch Video</div>
+            <p class="project-narrative">Commercial product launch video showcasing high-gloss 3D UI cards, token staking animations, kinetic typography, and fluid camera transitions.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">CLIENT</div><div class="val">TRUSTSWAP</div></div>
+              <div class="spec-box"><div class="label">3D ENGINE</div><div class="val">CINEMA 4D / OCTANE</div></div>
+              <div class="spec-box"><div class="label">COMPOSITING</div><div class="val">AFTER EFFECTS</div></div>
+              <div class="spec-box"><div class="label">FORMAT</div><div class="val">16:9 COMMERCIAL</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10. LDA Aggregator Highlight -->
+    <div class="rowan-work-row" data-category="shortform">
+      <div class="row-summary-bar">
+        <span class="row-index">[10]</span>
+        <div class="row-title-block">
+          <div class="row-project-title">LDA Aggregator: Highlight Sequence</div>
+          <div class="row-category-tag" style="color: var(--amber-core);">📱 9:16 VERTICAL SHORT FORM</div>
+        </div>
+        <div class="row-role-text col-hide-mobile">VERTICAL VIDEO EDITOR &amp; SOUND LEAD</div>
+        <div class="row-format-badge col-hide-mobile">9:16 VERTICAL</div>
+        <div class="row-toggle-icon">+</div>
+      </div>
+      <div class="row-expandable-content">
+        <div class="expandable-video-grid">
+          <div class="row-video-player mode-9-16">
+            <video src="./LDA%20Agg%20CLIPS%20FINAL%20.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="showcase-meta-card" style="background: rgba(0,0,0,0.4);">
+            <div class="project-hero-title">Kinetic 9:16 Social Montage</div>
+            <p class="project-narrative">Fast-cut 9:16 vertical highlight reel combining high-impact clips, speed ramps, visual flares, and rhythmic montage pacing.</p>
+            <div class="project-specs-grid">
+              <div class="spec-box"><div class="label">FORMAT</div><div class="val">9:16 VERTICAL</div></div>
+              <div class="spec-box"><div class="label">PIPELINE</div><div class="val">PREMIERE / AE</div></div>
+              <div class="spec-box"><div class="label">PACING</div><div class="val">SPEED RAMPS / 60FPS</div></div>
+              <div class="spec-box"><div class="label">PLATFORMS</div><div class="val">TIKTOK / SHORTS / REELS</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Rowan Contact CTA -->
+  <section class="rowan-contact-cta-section" style="margin-top: 64px;">
+    <div class="rowan-container">
+      <div class="contact-button-wrapper">
+        <a href="mailto:donye3d@gmail.com" class="rowan-big-contact-btn">
+          <span class="contact-btn-text">Let's Work Together</span>
+          <div class="contact-underline-wrapper">
+            <div class="contact-underline-fill"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rowan Footer -->
+  <footer class="rowan-footer">
+    <div class="rowan-container">
+      <div class="top-footer-bar">
+        <div class="footer-brand-col">
+          <div class="brand-group" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff;">
+            <div class="refraction-orb"></div>
+            <div>
+              <div class="brand-name">DONYE WILSON</div>
+              <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-col-heading">Prototypes</div>
+          <div class="footer-links-list">
+            <a href="./mockup1.html" class="footer-nav-link">Mockup 1 (Prismatic Horizon)</a>
+            <a href="./mockup2.html" class="footer-nav-link">Mockup 2 (Frosted Monolith)</a>
+            <a href="./mockup3.html" class="footer-nav-link">Mockup 3 (Spectral Minimalist)</a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-col-heading">Channels</div>
+          <div class="footer-links-list">
+            <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="footer-nav-link">YTJobs Verified Profile ↗</a>
+            <a href="mailto:donye3d@gmail.com" class="footer-nav-link">donye3d@gmail.com ↗</a>
+          </div>
+        </div>
+        <div class="footer-newsletter-col">
+          <div class="footer-col-heading">Direct Uplink</div>
+          <a href="mailto:donye3d@gmail.com" class="liquid-btn primary" style="justify-content: center; width: 100%; padding: 12px; margin-top: 10px;">
+            START A CONVERSATION
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const rows = document.querySelectorAll('.rowan-work-row');
+      const filterBtns = document.querySelectorAll('.filter-btn');
+
+      rows.forEach(row => {
+        row.querySelector('.row-summary-bar').addEventListener('click', () => {
+          const isExpanded = row.classList.contains('expanded');
+          rows.forEach(r => r.classList.remove('expanded'));
+          if (!isExpanded) {
+            row.classList.add('expanded');
+            const video = row.querySelector('video');
+            if (video) video.play().catch(() => {});
+          }
+        });
+      });
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const filter = btn.getAttribute('data-filter');
+
+          let firstMatched = false;
+          rows.forEach(row => {
+            const cat = row.getAttribute('data-category');
+            if (filter === 'all' || cat === filter) {
+              row.style.display = 'block';
+              if (!firstMatched) {
+                row.classList.add('expanded');
+                firstMatched = true;
+              } else {
+                row.classList.remove('expanded');
+              }
+            } else {
+              row.style.display = 'none';
+              row.classList.remove('expanded');
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>

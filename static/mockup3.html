@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Donye Wilson — Mockup 3: Spectral Minimalist</title>
+  <meta name="description" content="Mockup 3: Ultra-clean centered WELCOME Header with continuous cinematic category feed and floating sticky liquid glass dock.">
+
+  <!-- Rowan Typography: Inter Tight + Plus Jakarta Sans + JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="shortcut icon" href="./favicon.ico">
+  <link rel="stylesheet" href="./css/style.css">
+  
+  <style>
+    /* ==========================================================================
+       MOCKUP 3: SPECTRAL MINIMALIST (CONTINUOUS CATEGORY SCROLL FEED)
+       ========================================================================== */
+    .mockup-switcher-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 38px;
+      background: rgba(4, 5, 8, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+    .switcher-label {
+      color: var(--amber-core);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .switcher-tabs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .switcher-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 4px 12px;
+      border-radius: var(--radius-pill);
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+    }
+    .switcher-link:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .switcher-link.active {
+      color: #fff;
+      background: rgba(255, 96, 26, 0.25);
+      border-color: rgba(255, 96, 26, 0.5);
+      box-shadow: 0 0 12px rgba(255, 96, 26, 0.3);
+    }
+
+    /* Spectral Minimalist Centered Hero */
+    .spectral-hero-section {
+      width: 100%;
+      min-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      padding: 140px 24px 80px;
+      margin-top: 38px;
+    }
+    .spectral-halo {
+      position: absolute;
+      width: 600px;
+      height: 300px;
+      background: radial-gradient(ellipse at center, rgba(255, 96, 26, 0.35) 0%, rgba(192, 132, 252, 0.2) 40%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 1;
+    }
+    .spectral-welcome-title {
+      font-family: var(--font-display);
+      font-size: clamp(80px, 16vw, 180px);
+      font-weight: 900;
+      line-height: 0.82;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      background: linear-gradient(180deg, #ffffff 30%, rgba(255, 255, 255, 0.4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 70px rgba(255, 96, 26, 0.35));
+      position: relative;
+      z-index: 2;
+    }
+    .spectral-line {
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #ff601a, #c084fc, transparent);
+      margin: 20px 0;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Continuous Category Feed Containers */
+    .spectral-feed-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      padding: 0 24px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 72px;
+    }
+    .category-section-block {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      scroll-margin-top: 100px;
+    }
+    .category-section-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 14px;
+    }
+    .category-badge-title {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text-white);
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .category-number-tag {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--amber-core);
+    }
+
+    /* Cinematic Video Card */
+    .spectral-cards-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 28px;
+    }
+    @media (max-width: 600px) {
+      .spectral-cards-row {
+        grid-template-columns: 1fr;
+      }
+    }
+    .spectral-video-card {
+      background: var(--bg-card);
+      backdrop-filter: var(--glass-blur);
+      border-radius: var(--radius-glass);
+      border: 1px solid var(--glass-border);
+      border-top: 1px solid var(--glass-border-specular);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: var(--glass-shadow);
+      transition: all 0.3s ease;
+    }
+    .spectral-video-card:hover {
+      border-color: rgba(255, 96, 26, 0.5);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75), 0 0 30px rgba(255, 96, 26, 0.3);
+    }
+    .spectral-media-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      position: relative;
+    }
+    .spectral-media-wrap.vertical-aspect {
+      aspect-ratio: 9 / 16;
+      max-height: 520px;
+      width: auto;
+      margin: 0 auto;
+    }
+    .spectral-media-wrap video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .spectral-card-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Mockup Switcher Bar -->
+  <div class="mockup-switcher-bar">
+    <div class="switcher-label">
+      <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
+      DESIGN PROTOTYPES // 3 UNIQUE LIQUID GLASS SETUPS
+    </div>
+    <div class="switcher-tabs">
+      <a href="./mockup1.html" class="switcher-link">Mockup 1 (Prismatic Horizon)</a>
+      <a href="./mockup2.html" class="switcher-link">Mockup 2 (Frosted Monolith)</a>
+      <a href="./mockup3.html" class="switcher-link active">Mockup 3 (Spectral Minimalist)</a>
+    </div>
+  </div>
+
+  <!-- Ambient Looping Video Background (PRJCT ESCP_CON_1.mp4) -->
+  <div class="ambient-video-background">
+    <video class="bg-video-element" src="./PRJCT%20ESCP_CON_1.mp4" autoplay muted loop playsinline></video>
+    <div class="bg-video-overlay"></div>
+    <div class="liquid-caustics-mesh"></div>
+  </div>
+
+  <div class="caustic-ambient-1"></div>
+  <div class="caustic-ambient-2"></div>
+  <div class="caustic-ambient-3"></div>
+
+  <!-- Top Glass Navigation Dock -->
+  <div class="navigation-wrapper" style="top: 50px;">
+    <div class="rowan-nav-bar">
+      <div class="container-nav">
+        <a href="./index.html" class="logo-link">
+          <div class="refraction-orb"></div>
+          <div class="brand-text-block">
+            <div class="brand-name">DONYE WILSON</div>
+            <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+          </div>
+        </a>
+
+        <!-- Category Scroll-To Links -->
+        <nav class="nav-desktop-link-wrapper">
+          <a href="#cat-trailers" class="nav-link-item">GAME TRAILERS (2)</a>
+          <a href="#cat-motion" class="nav-link-item">3D WORLDS (3)</a>
+          <a href="#cat-youtube" class="nav-link-item">YOUTUBE (3)</a>
+          <a href="#cat-commercial" class="nav-link-item">COMMERCIAL (1)</a>
+          <a href="#cat-shortform" class="nav-link-item">SHORT FORM (1)</a>
+        </nav>
+
+        <div class="header-actions">
+          <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="liquid-btn ytjobs-link-btn">
+            <span>▶</span> YTJOBS VERIFIED ↗
+          </a>
+          <a href="./Donye_Wilson_Resume.pdf" target="_blank" class="liquid-btn">
+            <span>RESUME PDF</span> ↗
+          </a>
+          <button class="liquid-btn primary" id="btn-open-brief">
+            <span>+</span> COMMISSION REEL
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPECTRAL MINIMALIST CENTERED HERO -->
+  <section class="spectral-hero-section">
+    <div class="spectral-halo"></div>
+    <div class="hero-top-eyebrow" style="z-index: 2;">
+      <span class="refraction-orb" style="width: 10px; height: 10px;"></span>
+      <span class="eyebrow-text">SWISS MINIMALISM // LIQUID GLASS LIGHT REFRACTION</span>
+      <span class="eyebrow-badge">MOCKUP 3: SPECTRAL MINIMALIST</span>
+    </div>
+
+    <h1 class="spectral-welcome-title">WELCOME</h1>
+    <div class="spectral-line"></div>
+
+    <div class="hero-disciplines-row" style="justify-content: center; z-index: 2; border-top: none; padding-top: 0;">
+      <div class="discipline-item"><span class="discipline-dot"></span> Game Trailers</div>
+      <div class="discipline-item"><span class="discipline-dot"></span> 3D Worlds</div>
+      <div class="discipline-item"><span class="discipline-dot"></span> YouTube Essays</div>
+      <div class="discipline-item"><span class="discipline-dot"></span> Commercial Motion</div>
+      <div class="discipline-item"><span class="discipline-dot"></span> 9:16 Social Edits</div>
+    </div>
+
+    <a href="#cat-trailers" class="hero-scroll-indicator" style="text-decoration: none; margin-top: 24px; z-index: 2;">
+      <span>↓ CONTINUOUS CINEMATIC SCROLL FEED</span>
+    </a>
+  </section>
+
+  <!-- CONTINUOUS CATEGORY SCROLL FEED (All 10 Videos Organized by Category) -->
+  <main class="spectral-feed-container">
+    
+    <!-- CATEGORY 1: GAME TRAILERS (2 Videos) -->
+    <section class="category-section-block" id="cat-trailers">
+      <div class="category-section-header">
+        <div class="category-badge-title">
+          <span class="category-number-tag">[01]</span>
+          <span>Game Trailers &amp; Launch Cinematics</span>
+        </div>
+        <span class="row-format-badge">2 ENTRIES</span>
+      </div>
+
+      <div class="spectral-cards-row">
+        <!-- 1. Blargis -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./All_Roads_Lead_To_Polygon_Final%203.2.mp4" controls autoplay muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag">GAME TRAILER • 16:9 4K</div>
+            <div class="project-hero-title">Blargis: Black Out Jack Trailer</div>
+            <p class="project-narrative">High-octane official launch trailer featuring explosive gameplay capture, multi-cam pacing, kinetic camera transitions, and bespoke title motion graphics.</p>
+          </div>
+        </div>
+
+        <!-- 2. Alchemortis -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./Alchemortis%20trailer%201.1.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag">GAME TRAILER • 16:9 4K</div>
+            <div class="project-hero-title">Alchemortis: Official Trailer</div>
+            <p class="project-narrative">Official launch trailer for Firebelley Games featuring dynamic combat editing, boss choreography, and custom UI motion graphics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 2: 3D WORLDS & UNREAL 5.4 (3 Videos) -->
+    <section class="category-section-block" id="cat-motion">
+      <div class="category-section-header">
+        <div class="category-badge-title">
+          <span class="category-number-tag">[02]</span>
+          <span>3D Procedural Worlds &amp; Unreal Engine 5.4</span>
+        </div>
+        <span class="row-format-badge">3 ENTRIES</span>
+      </div>
+
+      <div class="spectral-cards-row">
+        <!-- 3. Project Escape 01 -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./PRJCT%20ESCP_CON_1.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag">3D WORLDS • UNREAL 5.4</div>
+            <div class="project-hero-title">Project Escape: Sequence 01</div>
+            <p class="project-narrative">Procedural environment dynamics and high-speed cinematic flythrough rendered in Unreal Engine 5.4 with Nanite geometry and volumetric lighting.</p>
+          </div>
+        </div>
+
+        <!-- 4. ZK Mountain -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./ZK%20MOUNTAIN%201.0.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag">3D WORLDS • PROCEDURAL TERRAIN</div>
+            <div class="project-hero-title">ZK Mountain: Procedural Terrain</div>
+            <p class="project-narrative">Photorealistic mountain range generation using procedural heightfields, photogrammetry rock assets, and Octane sky illumination.</p>
+          </div>
+        </div>
+
+        <!-- 5. ZK Water -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./ZK%20WATER%20DEMO%201%2C2.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag">3D WORLDS • FLUID SIMULATION</div>
+            <div class="project-hero-title">ZK Water: Fluid Dynamics</div>
+            <p class="project-narrative">Realistic wave simulation, surface foam dynamics, underwater refraction caustics, and physical light absorption shaders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 3: YOUTUBE CONTENT & ESSAYS (3 Videos) -->
+    <section class="category-section-block" id="cat-youtube">
+      <div class="category-section-header">
+        <div class="category-badge-title">
+          <span class="category-number-tag" style="color: #ff4444;">[03]</span>
+          <span>Creator YouTube Post-Production &amp; Video Essays</span>
+        </div>
+        <span class="row-format-badge">3 ENTRIES</span>
+      </div>
+
+      <div class="spectral-cards-row">
+        <!-- 6. BC Hydro Explainer -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./BC%20Hydro's%20Shocking%20Power%20Policy%20Reversal%20Explained.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE • DOCUMENTARY</div>
+            <div class="project-hero-title">BC Hydro: Policy Reversal Explainer</div>
+            <p class="project-narrative">In-depth investigative documentary explainer examining energy infrastructure decisions, combining motion graphics and clean data breakdowns.</p>
+          </div>
+        </div>
+
+        <!-- 7. Bitcoin Broken Narrative -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./Bitcoin's%20Broken%20Narrative-%20Why%20It%20No%20Longer%20Tracks%20NASDAQ.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE • FINANCIAL ESSAY</div>
+            <div class="project-hero-title">Bitcoin's Broken Narrative Essay</div>
+            <p class="project-narrative">Analytical financial essay breaking down macroeconomic shifts and market metrics with animated chart visualizations and high-retention pacing.</p>
+          </div>
+        </div>
+
+        <!-- 8. Joshua Graham -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./Joshua%20Graham%20CINI.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag" style="color: #ff4444;">▶ YOUTUBE • CINEMATIC NARRATIVE</div>
+            <div class="project-hero-title">Joshua Graham: Cinematic Narrative</div>
+            <p class="project-narrative">Cinematic character narrative edit combining dramatic voiceover pacing, color grading, atmospheric scene transitions, and immersive sound.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 4: COMMERCIAL MOTION (1 Video) -->
+    <section class="category-section-block" id="cat-commercial">
+      <div class="category-section-header">
+        <div class="category-badge-title">
+          <span class="category-number-tag">[04]</span>
+          <span>Commercial Motion &amp; 3D Product Reveals</span>
+        </div>
+        <span class="row-format-badge">1 ENTRY</span>
+      </div>
+
+      <div class="spectral-cards-row">
+        <!-- 9. TrustSwap Launchpad -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap">
+            <video src="./TrustSwap%20Launchpad%20Animation%20Launch%20Video%20Final%200.4.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag">COMMERCIAL • 3D FINTECH PRODUCT</div>
+            <div class="project-hero-title">TrustSwap Launchpad Commercial</div>
+            <p class="project-narrative">Commercial product launch video showcasing high-gloss 3D UI cards, token staking animations, kinetic typography, and fluid camera transitions.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORY 5: SHORT FORM 9:16 (1 Video) -->
+    <section class="category-section-block" id="cat-shortform">
+      <div class="category-section-header">
+        <div class="category-badge-title">
+          <span class="category-number-tag" style="color: var(--amber-core);">[05]</span>
+          <span>9:16 Vertical High-Retention Short Form</span>
+        </div>
+        <span class="row-format-badge">1 ENTRY</span>
+      </div>
+
+      <div class="spectral-cards-row" style="max-width: 600px;">
+        <!-- 10. LDA Aggregator -->
+        <div class="spectral-video-card">
+          <div class="spectral-media-wrap vertical-aspect">
+            <video src="./LDA%20Agg%20CLIPS%20FINAL%20.mp4" controls muted loop playsinline></video>
+          </div>
+          <div class="spectral-card-info">
+            <div class="card-category-tag" style="color: var(--amber-core);">📱 9:16 VERTICAL SHORT FORM</div>
+            <div class="project-hero-title">LDA Aggregator: Highlight Sequence</div>
+            <p class="project-narrative">Fast-cut 9:16 vertical highlight reel combining high-impact clips, speed ramps, visual flares, and rhythmic montage pacing.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rowan Contact CTA -->
+  <section class="rowan-contact-cta-section">
+    <div class="rowan-container">
+      <div class="contact-button-wrapper">
+        <a href="mailto:donye3d@gmail.com" class="rowan-big-contact-btn">
+          <span class="contact-btn-text">Let's Work Together</span>
+          <div class="contact-underline-wrapper">
+            <div class="contact-underline-fill"></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rowan Footer -->
+  <footer class="rowan-footer">
+    <div class="rowan-container">
+      <div class="top-footer-bar">
+        <div class="footer-brand-col">
+          <div class="brand-group" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #fff;">
+            <div class="refraction-orb"></div>
+            <div>
+              <div class="brand-name">DONYE WILSON</div>
+              <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-col-heading">Prototypes</div>
+          <div class="footer-links-list">
+            <a href="./mockup1.html" class="footer-nav-link">Mockup 1 (Prismatic Horizon)</a>
+            <a href="./mockup2.html" class="footer-nav-link">Mockup 2 (Frosted Monolith)</a>
+            <a href="./mockup3.html" class="footer-nav-link">Mockup 3 (Spectral Minimalist)</a>
+          </div>
+        </div>
+        <div class="footer-links-col">
+          <div class="footer-col-heading">Channels</div>
+          <div class="footer-links-list">
+            <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="footer-nav-link">YTJobs Verified Profile ↗</a>
+            <a href="mailto:donye3d@gmail.com" class="footer-nav-link">donye3d@gmail.com ↗</a>
+          </div>
+        </div>
+        <div class="footer-newsletter-col">
+          <div class="footer-col-heading">Direct Uplink</div>
+          <a href="mailto:donye3d@gmail.com" class="liquid-btn primary" style="justify-content: center; width: 100%; padding: 12px; margin-top: 10px;">
+            START A CONVERSATION
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
