@@ -1,20 +1,77 @@
-<!-- Liquid Glass Footer -->
-<footer>
-  <div class="footer-container">
-    <div class="footer-left">
-      <div class="footer-title">{{ .Site.Params.author }} — VIDEO EDITOR & 3D ARTIST</div>
-      <div class="footer-desc">SPECIALIZING IN UNREAL ENGINE 5.4, OCTANE & KINETIC POST-PRODUCTION</div>
+<!-- ROWAN CONTACT CALL TO ACTION & FOOTER CONSOLE -->
+<section class="rowan-contact-cta-section">
+  <div class="rowan-container">
+    <div class="contact-button-wrapper">
+      <a href="mailto:donye3d@gmail.com" class="rowan-big-contact-btn" id="btn-cta-contact">
+        <span class="contact-btn-text">Let's Work Together</span>
+        <div class="contact-underline-wrapper">
+          <div class="contact-underline-fill"></div>
+        </div>
+      </a>
     </div>
-    <div class="footer-contact-links">
-      <a href="mailto:{{ .Site.Params.email }}" class="footer-contact-link">
-        <span>✉</span> {{ .Site.Params.email }}
-      </a>
-      <a href="tel:{{ .Site.Params.phone }}" class="footer-contact-link">
-        <span>☎</span> {{ .Site.Params.phone }}
-      </a>
-      <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" class="footer-contact-link">
-        <span>📄</span> Resume (PDF)
-      </a>
+  </div>
+</section>
+
+<!-- Rowan 12-Column Footer Console -->
+<footer class="rowan-footer">
+  <div class="rowan-container">
+    <div class="top-footer-bar">
+      
+      <!-- Brand & Identity Block -->
+      <div class="footer-brand-col">
+        <div class="brand-group">
+          <div class="refraction-orb"></div>
+          <div>
+            <div class="brand-name">DONYE WILSON</div>
+            <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+          </div>
+        </div>
+        <p class="footer-brand-desc">
+          Available for commercial game trailers, Unreal 5.4 cinematics, and ongoing YouTube creator post-production partnerships.
+        </p>
+      </div>
+
+      <!-- Quick Navigation Column -->
+      <div class="footer-links-col">
+        <div class="footer-col-heading">Navigation</div>
+        <div class="footer-links-list">
+          <a href="{{ .Site.BaseURL }}" class="footer-nav-link">Home</a>
+          <a href="#works" class="footer-nav-link">Selected Works</a>
+          <a href="#youtube-section" class="footer-nav-link">YouTube Content</a>
+          <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" class="footer-nav-link">Resume PDF ↗</a>
+        </div>
+      </div>
+
+      <!-- Verified Profiles Column -->
+      <div class="footer-links-col">
+        <div class="footer-col-heading">Direct Channels</div>
+        <div class="footer-links-list">
+          <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="footer-nav-link">YTJobs Verified Profile ↗</a>
+          <a href="mailto:donye3d@gmail.com" class="footer-nav-link">donye3d@gmail.com ↗</a>
+          <a href="tel:+16239860928" class="footer-nav-link">+1 (623) 986-0928 ↗</a>
+        </div>
+      </div>
+
+      <!-- Commission Brief Uplink -->
+      <div class="footer-newsletter-col">
+        <div class="footer-col-heading">Direct Commission Uplink</div>
+        <button class="liquid-btn primary" id="btn-footer-open-brief" style="width: 100%; justify-content: center; padding: 12px;">
+          <span>+</span> TRANSMIT PROJECT BRIEF
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="bottom-footer-bar">
+      <div class="footer-copyright">
+        © 2026 Donye Wilson. All Rights Reserved. Engineered with Liquid Glass &amp; Hugo.
+      </div>
+      <div class="footer-links-row">
+        <a href="https://ytjobs.co/talent/profile/484755" target="_blank" class="footer-sub-link">YTJobs</a>
+        <a href="mailto:donye3d@gmail.com" class="footer-sub-link">Email</a>
+        <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" class="footer-sub-link">Resume</a>
+      </div>
     </div>
   </div>
 </footer>

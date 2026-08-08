@@ -9,12 +9,13 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
 author = "Donye Wilson"
-description = "Senior Video Editor and 3D Motion Graphics Artist specializing in Unreal Engine 5.4 cinematics, game trailers, procedural worlds, and kinetic motion."
+description = "Senior Video Editor, Game Trailer Lead, and 3D Motion Graphics Artist specializing in Unreal Engine 5.4 cinematics, game trailers, YouTube creator content, and procedural 3D environments."
 email = "donye3d@gmail.com"
 phone = "+1 623-986-0928"
 location = "Los Angeles, CA"
 resume_path = "Donye_Wilson_Resume.pdf"
-default_video = "PRJCT ESCP_CON_1.mp4"
+default_video = "All_Roads_Lead_To_Polygon_Final 3.2.mp4"
+ytjobs_url = "https://ytjobs.co/talent/profile/484755"
 
 # Ignore legacy content directories
 ignoreFiles = ["content/posts/.*", "content/projects/.*", "content/recommendations/.*"]
