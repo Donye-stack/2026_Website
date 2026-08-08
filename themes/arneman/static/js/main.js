@@ -1,269 +1,218 @@
-// Mobile Navigation Toggle
-document.addEventListener('DOMContentLoaded', function() {
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.querySelector('.nav-links');
+/**
+ * Donye Wilson — Video Editor & 3D Motion Graphics Portfolio
+ * Interactive Showcase & Playback Engine for All Assets
+ */
+document.addEventListener('DOMContentLoaded', () => {
+  const playlistCards = document.querySelectorAll('.playlist-card');
+  const showcaseContainer = document.getElementById('showcase-media-container');
+  const badgeText = document.getElementById('active-badge-text');
+  const activeTimecode = document.getElementById('active-timecode');
+  const metaTitle = document.getElementById('meta-title');
+  const metaRole = document.getElementById('meta-role');
+  const metaClient = document.getElementById('meta-client');
+  const metaDesc = document.getElementById('meta-description');
+  const metaPipeline = document.getElementById('meta-pipeline');
+  const metaTools = document.getElementById('meta-tools');
+  const btnPlayPause = document.getElementById('btn-play-pause');
+  const btnMuteToggle = document.getElementById('btn-mute-toggle');
+  const timelineFill = document.getElementById('timeline-fill');
+  const timelineThumb = document.getElementById('timeline-thumb');
+  const timelineBar = document.getElementById('timeline-bar');
+  const playlistCountBadge = document.getElementById('playlist-count-badge');
+  const totalReelsCount = document.getElementById('total-reels-count');
+  let currentVideo = document.getElementById('main-showcase-video');
 
-    if (navToggle) {
-        navToggle.addEventListener('click', function() {
-            navToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
+  // Update total counts
+  if (totalReelsCount) totalReelsCount.textContent = `${playlistCards.length} ASSETS`;
+  if (playlistCountBadge) playlistCountBadge.textContent = `${playlistCards.length} ENTRIES`;
 
-        // Close menu when clicking on a link
-        const links = navLinks.querySelectorAll('a');
-        links.forEach(link => {
-            link.addEventListener('click', function() {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
+  // Clicking ANY card on the right immediately switches the left showcase video/image
+  playlistCards.forEach(card => {
+    card.addEventListener('click', () => {
+      // Highlight active card
+      playlistCards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const isClickInside = navToggle.contains(event.target) || navLinks.contains(event.target);
-            if (!isClickInside && navLinks.classList.contains('active')) {
-                navToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            }
-        });
-    }
+      // Extract metadata from card
+      const type = card.getAttribute('data-type');
+      const src = card.getAttribute('data-src');
+      const title = card.getAttribute('data-title');
+      const client = card.getAttribute('data-client');
+      const role = card.getAttribute('data-role');
+      const desc = card.getAttribute('data-desc');
+      const pipeline = card.getAttribute('data-pipeline');
+      const tools = card.getAttribute('data-tools');
+      const time = card.getAttribute('data-time') || '01:00';
 
-    // Smooth Scrolling for Anchor Links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href !== '#' && href.length > 1) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    const offsetTop = target.offsetTop - 80; // Account for fixed nav
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
-                }
-            }
-        });
+      // Update left showcase media
+      if (type === 'video') {
+        showcaseContainer.innerHTML = `
+          <video id="main-showcase-video" class="showcase-video" src="${src}" autoplay muted loop playsinline></video>
+          <div class="showcase-video-overlay">
+            <span class="active-badge-pill" id="active-badge-text">
+              <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
+              SHOWCASE: ${title}
+            </span>
+            <span class="timecode-pill" id="active-timecode">00:00 / ${time}</span>
+          </div>
+        `;
+        currentVideo = document.getElementById('main-showcase-video');
+        attachVideoEvents(currentVideo);
+        if (btnPlayPause) {
+          btnPlayPause.style.display = 'flex';
+          btnPlayPause.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>';
+        }
+        if (btnMuteToggle) {
+          btnMuteToggle.style.display = 'inline-flex';
+          btnMuteToggle.textContent = 'UNMUTE AUDIO';
+        }
+      } else {
+        showcaseContainer.innerHTML = `
+          <img class="showcase-img" src="${src}" alt="${title}" />
+          <div class="showcase-video-overlay">
+            <span class="active-badge-pill" id="active-badge-text">
+              <span class="refraction-orb" style="width: 8px; height: 8px;"></span>
+              SHOWCASE: ${title}
+            </span>
+            <span class="timecode-pill" id="active-timecode">LOOP / ${time}</span>
+          </div>
+        `;
+        currentVideo = null;
+        if (btnPlayPause) btnPlayPause.style.display = 'none';
+        if (btnMuteToggle) btnMuteToggle.style.display = 'none';
+        if (timelineFill) timelineFill.style.width = '100%';
+        if (timelineThumb) timelineThumb.style.left = '100%';
+      }
+
+      // Update metadata description sheet
+      if (metaTitle) metaTitle.textContent = title;
+      if (metaRole) metaRole.textContent = `ROLE: ${role}`;
+      if (metaClient) metaClient.textContent = client;
+      if (metaDesc) metaDesc.textContent = desc;
+      if (metaPipeline) metaPipeline.textContent = pipeline;
+      if (metaTools) metaTools.textContent = tools;
+
+      // Smooth scroll showcase into view on mobile
+      if (window.innerWidth < 1100) {
+        showcaseContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     });
+  });
 
-    // Scroll Reveal Animation
-    const scrollElements = document.querySelectorAll('.scroll-reveal');
-
-    const elementInView = (el, dividend = 1) => {
-        const elementTop = el.getBoundingClientRect().top;
-        return (
-            elementTop <=
-            (window.innerHeight || document.documentElement.clientHeight) / dividend
-        );
-    };
-
-    const displayScrollElement = (element) => {
-        element.classList.add('active');
-    };
-
-    const handleScrollAnimation = () => {
-        scrollElements.forEach((el) => {
-            if (elementInView(el, 1.25)) {
-                displayScrollElement(el);
-            }
-        });
-    };
-
-    window.addEventListener('scroll', () => {
-        handleScrollAnimation();
+  // Play/Pause and Audio Controls
+  function attachVideoEvents(videoEl) {
+    if (!videoEl) return;
+    videoEl.addEventListener('timeupdate', () => {
+      if (videoEl.duration) {
+        const pct = (videoEl.currentTime / videoEl.duration) * 100;
+        if (timelineFill) timelineFill.style.width = pct + '%';
+        if (timelineThumb) timelineThumb.style.left = pct + '%';
+        
+        const curM = Math.floor(videoEl.currentTime / 60);
+        const curS = Math.floor(videoEl.currentTime % 60);
+        const durM = Math.floor(videoEl.duration / 60);
+        const durS = Math.floor(videoEl.duration % 60);
+        const timecodeEl = document.getElementById('active-timecode');
+        if (timecodeEl) {
+          timecodeEl.textContent = `${String(curM).padStart(2,'0')}:${String(curS).padStart(2,'0')} / ${String(durM).padStart(2,'0')}:${String(durS).padStart(2,'0')}`;
+        }
+      }
     });
+  }
 
-    // Initial check for elements in view
-    handleScrollAnimation();
+  if (currentVideo) attachVideoEvents(currentVideo);
 
-    // Shuffle recommendations on page load
-    function shuffleRecommendations() {
-        const grid = document.getElementById('recommendationsGrid');
-        if (!grid) return;
+  if (btnPlayPause) {
+    btnPlayPause.addEventListener('click', () => {
+      if (!currentVideo) return;
+      if (currentVideo.paused) {
+        currentVideo.play();
+        btnPlayPause.innerHTML = '<svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>';
+      } else {
+        currentVideo.pause();
+        btnPlayPause.innerHTML = '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>';
+      }
+    });
+  }
 
-        const cards = Array.from(grid.children);
+  if (btnMuteToggle) {
+    btnMuteToggle.addEventListener('click', () => {
+      if (!currentVideo) return;
+      currentVideo.muted = !currentVideo.muted;
+      btnMuteToggle.textContent = currentVideo.muted ? 'UNMUTE AUDIO' : 'MUTE AUDIO';
+    });
+  }
 
-        // Fisher-Yates shuffle
-        for (let i = cards.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [cards[i], cards[j]] = [cards[j], cards[i]];
+  // Interactive timeline scrubbing
+  if (timelineBar) {
+    timelineBar.addEventListener('click', (e) => {
+      if (!currentVideo || !currentVideo.duration) return;
+      const rect = timelineBar.getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      const pct = Math.max(0, Math.min(1, clickX / rect.width));
+      currentVideo.currentTime = pct * currentVideo.duration;
+    });
+  }
+
+  // Filter Buttons
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+
+      let visibleCount = 0;
+      playlistCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = 'grid';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
         }
+      });
 
-        cards.forEach(card => grid.appendChild(card));
+      if (playlistCountBadge) {
+        playlistCountBadge.textContent = `${visibleCount} ENTRIES`;
+      }
+    });
+  });
+
+  // Commission Brief Modal Handlers
+  const briefModal = document.getElementById('brief-modal');
+  const btnOpenBrief = document.getElementById('btn-open-brief');
+  const btnCloseModal = document.getElementById('btn-close-modal');
+
+  if (btnOpenBrief && briefModal) {
+    btnOpenBrief.addEventListener('click', () => {
+      briefModal.classList.add('open');
+    });
+  }
+  if (btnCloseModal && briefModal) {
+    btnCloseModal.addEventListener('click', () => {
+      briefModal.classList.remove('open');
+    });
+  }
+  if (briefModal) {
+    briefModal.addEventListener('click', (e) => {
+      if (e.target === briefModal) briefModal.classList.remove('open');
+    });
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && briefModal) briefModal.classList.remove('open');
+    if (e.code === 'Space' && e.target === document.body && btnPlayPause && currentVideo) {
+      e.preventDefault();
+      btnPlayPause.click();
     }
-
-    // Run shuffle if recommendations section exists
-    if (document.getElementById('recommendationsGrid')) {
-        shuffleRecommendations();
-    }
-
-    // Fetch Latest YouTube Video
-    async function fetchLatestYouTube() {
-        const youtubeContent = document.getElementById('youtube-content');
-        if (!youtubeContent) return;
-
-        const YOUTUBE_API_KEY = 'AIzaSyB8qAjq1rbjgDli6iSFPPxWeEpazmkI5FE';
-        const CHANNEL_ID = 'UCPxvqIgJxavwDjRBKyvvIng'; // bearlikelion channel ID
-
-        if (YOUTUBE_API_KEY === 'YOUR_YOUTUBE_API_KEY_HERE') {
-            youtubeContent.innerHTML = `
-                <div class="latest-error">
-                    <p>YouTube API key not configured.</p>
-                    <p style="font-size: 13px; margin-top: 8px;">Add your API key to <code>themes/arneman/static/js/main.js</code></p>
-                </div>
-            `;
-            return;
+    if (e.key.toLowerCase() === 'f') {
+      const frame = document.querySelector('.showcase-liquid-frame');
+      if (frame) {
+        if (!document.fullscreenElement) {
+          frame.requestFullscreen?.();
+        } else {
+          document.exitFullscreen?.();
         }
-
-        try {
-            const response = await fetch(
-                `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&channelId=${CHANNEL_ID}&part=snippet,id&order=date&maxResults=1&type=video`
-            );
-            const data = await response.json();
-
-            if (data.items && data.items.length > 0) {
-                const video = data.items[0];
-                const videoId = video.id.videoId;
-                const title = video.snippet.title;
-                const thumbnail = video.snippet.thumbnails.high.url;
-                const publishedAt = new Date(video.snippet.publishedAt);
-                const timeAgo = getTimeAgo(publishedAt);
-                const description = video.snippet.description;
-
-                // Truncate description to ~200 characters
-                const truncatedDescription = description.length > 200
-                    ? description.substring(0, 200).trim() + '...'
-                    : description;
-
-                youtubeContent.innerHTML = `
-                    <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank" class="latest-link">
-                        <div class="latest-thumbnail">
-                            <img src="${thumbnail}" alt="${title}">
-                            <div class="latest-play-overlay">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                        <div class="latest-info">
-                            <h4>${title}</h4>
-                            <p class="latest-description">${truncatedDescription}</p>
-                            <p class="latest-date"><i class="fas fa-clock"></i> ${timeAgo}</p>
-                        </div>
-                    </a>
-                `;
-            } else {
-                youtubeContent.innerHTML = '<div class="latest-error">No videos found</div>';
-            }
-        } catch (error) {
-            console.error('Error fetching YouTube data:', error);
-            youtubeContent.innerHTML = '<div class="latest-error">Failed to load video</div>';
-        }
+      }
     }
-
-    // Fetch Latest GitHub Repo
-    async function fetchLatestGitHub() {
-        const githubContent = document.getElementById('github-content');
-        if (!githubContent) return;
-
-        const GITHUB_USERNAME = 'bearlikelion';
-
-        try {
-            const response = await fetch(
-                `https://api.github.com/users/${GITHUB_USERNAME}/repos?sort=created&direction=desc&per_page=1`
-            );
-            const data = await response.json();
-
-            if (data && data.length > 0) {
-                const repo = data[0];
-                const name = repo.name;
-                const description = repo.description || 'No description provided';
-                const url = repo.html_url;
-                const language = repo.language || 'Unknown';
-                const stars = repo.stargazers_count;
-                const createdAt = new Date(repo.created_at);
-                const timeAgo = getTimeAgo(createdAt);
-
-                // Fetch README
-                let readmeText = '';
-                try {
-                    const readmeResponse = await fetch(
-                        `https://api.github.com/repos/${GITHUB_USERNAME}/${name}/readme`,
-                        {
-                            headers: {
-                                'Accept': 'application/vnd.github.v3.raw'
-                            }
-                        }
-                    );
-
-                    if (readmeResponse.ok) {
-                        const readmeContent = await readmeResponse.text();
-                        // Remove markdown headers, links, code blocks for cleaner display
-                        let cleanedReadme = readmeContent
-                            .replace(/^#+\s+/gm, '') // Remove markdown headers
-                            .replace(/\[([^\]]+)\]\([^\)]+\)/g, '$1') // Convert links to text
-                            .replace(/```[\s\S]*?```/g, '') // Remove code blocks
-                            .replace(/`([^`]+)`/g, '$1') // Remove inline code formatting
-                            .replace(/^\s*[-*+]\s+/gm, '') // Remove list markers
-                            .replace(/\n\s*\n/g, '\n') // Remove extra newlines
-                            .trim();
-
-                        // Truncate to ~200 characters
-                        readmeText = cleanedReadme.length > 200
-                            ? cleanedReadme.substring(0, 200).trim() + '...'
-                            : cleanedReadme;
-                    }
-                } catch (readmeError) {
-                    console.log('No README available for', name);
-                }
-
-                const displayText = readmeText || description;
-
-                githubContent.innerHTML = `
-                    <a href="${url}" target="_blank" class="latest-link">
-                        <div class="latest-info">
-                            <h4><i class="fas fa-code-branch"></i> ${name}</h4>
-                            <p class="latest-description">${displayText}</p>
-                            <div class="latest-meta">
-                                ${language !== 'Unknown' ? `<span class="latest-language"><i class="fas fa-circle"></i> ${language}</span>` : ''}
-                                <span class="latest-stars"><i class="fas fa-star"></i> ${stars}</span>
-                                <span class="latest-date"><i class="fas fa-clock"></i> ${timeAgo}</span>
-                            </div>
-                        </div>
-                    </a>
-                `;
-            } else {
-                githubContent.innerHTML = '<div class="latest-error">No repositories found</div>';
-            }
-        } catch (error) {
-            console.error('Error fetching GitHub data:', error);
-            githubContent.innerHTML = '<div class="latest-error">Failed to load repository</div>';
-        }
-    }
-
-    // Helper function to format time ago
-    function getTimeAgo(date) {
-        const seconds = Math.floor((new Date() - date) / 1000);
-
-        let interval = seconds / 31536000;
-        if (interval > 1) return Math.floor(interval) + ' year' + (Math.floor(interval) > 1 ? 's' : '') + ' ago';
-
-        interval = seconds / 2592000;
-        if (interval > 1) return Math.floor(interval) + ' month' + (Math.floor(interval) > 1 ? 's' : '') + ' ago';
-
-        interval = seconds / 86400;
-        if (interval > 1) return Math.floor(interval) + ' day' + (Math.floor(interval) > 1 ? 's' : '') + ' ago';
-
-        interval = seconds / 3600;
-        if (interval > 1) return Math.floor(interval) + ' hour' + (Math.floor(interval) > 1 ? 's' : '') + ' ago';
-
-        interval = seconds / 60;
-        if (interval > 1) return Math.floor(interval) + ' minute' + (Math.floor(interval) > 1 ? 's' : '') + ' ago';
-
-        return Math.floor(seconds) + ' second' + (Math.floor(seconds) > 1 ? 's' : '') + ' ago';
-    }
-
-    // Fetch latest content if section exists
-    if (document.getElementById('latest')) {
-        fetchLatestYouTube();
-        fetchLatestGitHub();
-    }
+  });
 });

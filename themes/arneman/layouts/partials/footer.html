@@ -1,15 +1,20 @@
-<footer class="modern-footer">
-    <div class="footer-content">
-        <p class="footer-text">
-            © {{ now.Year }} Mark Arneman. Built with <a href="http://www.gohugo.io/" target="_blank">Hugo</a>.
-        </p>
-        <p class="footer-links">
-            <a href="https://github.com/bearlikelion/arneman.me" target="_blank">This Site's Source Code</a>
-            <span class="separator">•</span>
-            <a href="/resume" target="_blank">Read my Resume</a>
-            <span class="separator">•</span>
-            <a href="https://status.arneman.me" target="_blank">See My Status Page</a>
-        </p>
-        <img src="https://unami.prod.arneman.me/p/A9vqXVrgP">
+<!-- Liquid Glass Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-left">
+      <div class="footer-title">{{ .Site.Params.author }} — VIDEO EDITOR & 3D ARTIST</div>
+      <div class="footer-desc">SPECIALIZING IN UNREAL ENGINE 5.4, OCTANE & KINETIC POST-PRODUCTION</div>
     </div>
+    <div class="footer-contact-links">
+      <a href="mailto:{{ .Site.Params.email }}" class="footer-contact-link">
+        <span>✉</span> {{ .Site.Params.email }}
+      </a>
+      <a href="tel:{{ .Site.Params.phone }}" class="footer-contact-link">
+        <span>☎</span> {{ .Site.Params.phone }}
+      </a>
+      <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" class="footer-contact-link">
+        <span>📄</span> Resume (PDF)
+      </a>
+    </div>
+  </div>
 </footer>

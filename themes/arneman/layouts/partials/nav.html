@@ -1,19 +1,31 @@
-<nav class="modern-nav">
-	<div class="nav-container">
-		<div class="nav-brand">
-			<a href='{{ .Site.BaseURL }}'>Mark Arneman</a>
-		</div>
-		<div class="nav-links">
-			<a href="#about">About</a>
-			<a href="/recommendations/">Recommendations</a>
-			<a href="#latest">Latest Content</a>
-			<a href="#connect">Connect</a>
-			<a href="/resume" target="_blank" class="nav-cta">Resume</a>
-		</div>
-		<div class="nav-toggle" id="navToggle">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-	</div>
-</nav>
+<!-- Liquid Glass Header Dock with Shimmer Refraction -->
+<div class="header-wrapper">
+  <header class="liquid-glass-dock">
+    <a href="{{ .Site.BaseURL }}" class="brand-group">
+      <div class="refraction-orb"></div>
+      <div>
+        <div class="brand-name">DONYE WILSON</div>
+        <div class="brand-role-tag">VIDEO EDITOR // 3D MOTION ARTIST</div>
+      </div>
+    </a>
+
+    <!-- Category Filter Pills -->
+    <nav class="filter-pills-nav">
+      <button class="filter-btn active" data-filter="all">ALL WORK (23)</button>
+      <button class="filter-btn" data-filter="trailers">GAME TRAILERS</button>
+      <button class="filter-btn" data-filter="motion">3D WORLDS</button>
+      <button class="filter-btn" data-filter="commercial">COMMERCIAL & TECH</button>
+      <button class="filter-btn" data-filter="shortform">SHORT FORM & YT</button>
+    </nav>
+
+    <!-- Action Buttons -->
+    <div class="header-actions">
+      <a href="{{ .Site.BaseURL }}{{ .Site.Params.resume_path }}" target="_blank" class="liquid-btn">
+        <span>RESUME PDF</span> ↗
+      </a>
+      <button class="liquid-btn primary" id="btn-open-brief">
+        <span>+</span> COMMISSION REEL
+      </button>
+    </div>
+  </header>
+</div>

@@ -1,0 +1,26 @@
+<!-- Interactive Commission Brief Modal (Liquid Glass) -->
+<div class="modal-overlay" id="brief-modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <span>COMMISSION UPLINK // DONYE WILSON</span>
+      <button id="btn-close-modal" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-family: var(--font-mono); font-size: 14px;">[ESC ✕]</button>
+    </div>
+    <form class="modal-body" onsubmit="event.preventDefault(); alert('Transmission Received. Donye Wilson will respond within 24 hours.'); document.getElementById('brief-modal').classList.remove('open');">
+      <div class="form-group">
+        <label>Studio / Company Name</label>
+        <input type="text" class="form-input" placeholder="e.g. Respawn Entertainment / Blur Studio" required />
+      </div>
+      <div class="form-group">
+        <label>Director / Producer Email</label>
+        <input type="email" class="form-input" placeholder="director@studio.com" required />
+      </div>
+      <div class="form-group">
+        <label>Project Scope, Deliverables & Timeline</label>
+        <textarea class="form-textarea" rows="4" placeholder="Describe the trailer, 3D world animation, editing timeline, or kinetic motion deliverables..." required></textarea>
+      </div>
+      <button type="submit" class="liquid-btn primary" style="justify-content: center; width: 100%; padding: 12px; margin-top: 4px;">
+        TRANSMIT PROJECT BRIEF [ENCRYPTED]
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,7 +1,2 @@
+<!-- Interactive JavaScript Logic -->
 <script src="{{ .Site.BaseURL }}js/main.js"></script>
-<script src="https://kit.fontawesome.com/d251d3e9b0.js" crossorigin="anonymous"></script>
-<script defer src="https://unami.prod.arneman.me/mdnt" data-website-id="87637f6e-e74c-408e-a437-b27bed949198"></script>
-
-{{ range .Site.Params.customJS }}
-<script src="{{ $.Site.BaseURL }}{{ . }}"></script>
-{{ end }}

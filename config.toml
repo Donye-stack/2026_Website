@@ -1,19 +1,20 @@
-# Site settings
-baseurl = "/"
+# Site settings for Donye Wilson Portfolio
+baseURL = "/"
 languageCode = "en-US"
-title = "Mark Arneman"
+title = "Donye Wilson — Video Editor & 3D Motion Graphics Artist"
 theme = "arneman"
 
-# Disable page types not used in single-page layout
+# Disable unused taxonomies
 disableKinds = ["taxonomy", "term"]
 
 [params]
-author = "Mark Arneman"
-description = "Mark Arneman's online portfolio."
-
-enableGoogleAnalytics = true
-googleAnalytics = "UA-48666725-1"
+author = "Donye Wilson"
+description = "Senior Video Editor and 3D Motion Graphics Artist specializing in Unreal Engine 5.4 cinematics, game trailers, procedural worlds, and kinetic motion."
+email = "donye3d@gmail.com"
+phone = "+1 623-986-0928"
+location = "Los Angeles, CA"
+resume_path = "Donye_Wilson_Resume.pdf"
+default_video = "PRJCT ESCP_CON_1.mp4"
 
 # Ignore legacy content directories
-ignoreFiles = ["content/posts/.*", "content/projects/.*"]
-
+ignoreFiles = ["content/posts/.*", "content/projects/.*", "content/recommendations/.*"]
