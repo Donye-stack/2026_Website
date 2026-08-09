@@ -54,12 +54,16 @@ html {
   color: var(--text-main);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  width: 100vw;
 }
 
 body {
   min-height: 100vh;
   position: relative;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
   display: flex;
   flex-direction: column;
   background: radial-gradient(circle at 50% 10%, #151b2c 0%, #0b0e17 100%);
@@ -305,7 +309,7 @@ body {
 
 .spectral-welcome-title {
   font-family: var(--font-display);
-  font-size: clamp(80px, 16vw, 180px);
+  font-size: clamp(40px, 14vw, 180px);
   font-weight: 900;
   line-height: 0.82;
   letter-spacing: -0.05em;
@@ -1283,4 +1287,111 @@ body {
 
 .modal-footer-direct a:hover {
   text-decoration: underline;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS & SCALING
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .rowan-nav-bar {
+    padding: 10px 12px !important;
+    border-radius: 20px !important;
+  }
+  
+  .container-nav {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+  
+  .nav-desktop-link-wrapper, .header-actions {
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    padding-bottom: 2px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  
+  .nav-desktop-link-wrapper {
+    justify-content: flex-start !important;
+  }
+  
+  .header-actions {
+    justify-content: center !important;
+    gap: 8px !important;
+  }
+  
+  .nav-desktop-link-wrapper::-webkit-scrollbar, .header-actions::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .nav-link-item, .liquid-btn {
+    flex-shrink: 0 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .spectral-hero-section {
+    padding: 100px 16px 40px;
+    min-height: 60vh;
+  }
+}
+
+@media (max-width: 600px) {
+  .liquid-btn, .nav-link-item {
+    font-size: 9px !important;
+    padding: 6px 12px !important;
+  }
+
+  .row-summary-bar {
+    grid-template-columns: 24px 60px 1fr 24px !important;
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  
+  .row-title-block {
+    min-width: 0; /* Fixes grid overflow */
+    padding-right: 8px;
+  }
+  
+  .row-project-title {
+    font-size: 15px !important;
+    line-height: 1.2;
+    word-break: break-word;
+  }
+
+  .row-thumb-preview {
+    width: 60px !important;
+    height: 34px !important;
+    min-width: 60px !important;
+  }
+  
+  .rowan-work-row.expanded .row-expandable-content {
+    padding: 16px !important;
+  }
+  
+  .project-hero-title {
+    font-size: 18px !important;
+  }
+  
+  .project-specs-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .contact-button-wrapper {
+    padding: 32px 20px !important;
+  }
+  .contact-btn-text {
+    font-size: clamp(28px, 8vw, 76px) !important;
+  }
+  .ytjobs-verified-banner {
+    padding: 24px !important;
+  }
+  .modal-card {
+    margin: 10px !important;
+  }
+  .modal-body {
+    padding: 20px 20px 24px !important;
+  }
 }
